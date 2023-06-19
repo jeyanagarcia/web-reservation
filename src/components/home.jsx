@@ -1,5 +1,5 @@
 import React from 'react'
-import binanVid from '../assets/binanvid.mp4'
+import binanVid from '../assets/vid.mp4'
 
 const home = () => {
   return (
