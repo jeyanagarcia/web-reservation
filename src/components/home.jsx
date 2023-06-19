@@ -1,11 +1,11 @@
 import React from 'react'
-import binanVid from '../assets/vid.mp4'
+import video from '../assets/video.mp4'
 
 const home = () => {
   return (
     <div className='w-full h-screen relative'>
         <video className='w-full h-full object-cover' 
-        src ={binanVid} autoPlay loop muted 
+        src ={video} autoPlay loop muted 
         />
     <div className='absolute w-full h-full top-0 left-0 bg-gray-900/30'></div>
       <div className='absolute top-0 w-full h-full flex flex-col justify-center text-center text-black p-4'>
