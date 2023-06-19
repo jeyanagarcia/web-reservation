@@ -48,13 +48,23 @@ const Navbar = () => {
       <div onClick={handleNav} className={nav ? 'absolute text-black left-0 top-0 w-full bg-gray-100/90 px-4 py-7 flex flex-col' : 'absolute left-[-100%]'}>
         <ul>
           <h1>Biñan</h1>
-          <li className='border-b'>Home</li>
-          <li className='border-b'>Blog</li>
-          <li className='border-b'>Events</li>
-          <li className='border-b'>Contact Us</li>
+
+          <li className='border-b'>
+          <Link to="/">Home</Link></li>
+          
+          <li className='border-b'>
+          <Link to="/blog">Blog</Link></li>
+          
+          <li className='border-b'>
+          <Link to="/event">Events</Link></li>
+          
+          <li className='border-b'>
+          <Link to="/contact-us">Contact Us</Link></li>
         
           <div className='flex flex-col'>
-            <button>Account</button>
+          <Link to="/login">
+          <button className='rounded-full border w-full my-5 py-2 bg-green-600 hover:bg-green-500 text-white'>
+          Account</button></Link>
           </div>
 
           <div className='flex justify-between my-6'>
