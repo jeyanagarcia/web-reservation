@@ -4,9 +4,12 @@ import { eventData } from '../../constant/eventData';
 export const EventContext = createContext();
 
 const EventContextProvider = ({ children }) => {
-  const [organizer, setOrganizer] = useState([]);
-  const [organization, setOrganization] = useState('Organizer (any)');
   const [eventt, setEventt] = useState(eventData);
+  const [organizer, setOrganizer] = useState([]);
+  const [choice, setChoices] = useState('Organizer (any)');
+  const [genre1, setGenre1] = useState([]);
+  const [genre2, setGenre2] = useState([]);
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -23,8 +26,8 @@ const EventContextProvider = ({ children }) => {
         setEventt,
         organizer,
         setOrganizer,
-        organization,
-        setOrganization,
+        choice,
+        setChoices,
         loading,
         setLoading,
       }}

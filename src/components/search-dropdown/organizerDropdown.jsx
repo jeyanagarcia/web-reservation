@@ -5,13 +5,13 @@ import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
 import { MdPerson } from 'react-icons/md';
 
 const OrganizerDropdown = () => {
-  const { organization, setOrganization, organizer } = useContext(EventContext);
+  const { choice, setChoices, organizer } = useContext(EventContext);
   console.log(organizer);
 
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOrganizationSelection = (selectedOrg) => {
-    setOrganization(selectedOrg);
+    setChoices(selectedOrg);
     setIsOpen(false);
   };
 
@@ -20,8 +20,8 @@ const OrganizerDropdown = () => {
       <Menu.Button onClick={() => setIsOpen(!isOpen)} className={'dropdown-btn w-full text-left'}>
         <MdPerson className='dropdown-icon-primary' />
         <div className='dropdown-label'>
-          <div className='text-[15px] text-black font-medium leading-tight'>{organization}</div>
-          <div className='text-[13px] text-black'>Select your Organizer</div>
+          <div className='text-[13px] text-black font-medium leading-tight'>{choice}</div>
+          <div className='text-[12px] text-black'>Select your Organizer</div>
         </div>
         {isOpen ? (
           <RiArrowUpSLine className='dropdown-icon-secondary' />
