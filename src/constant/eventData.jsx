@@ -31,7 +31,7 @@ export const eventData = [
     },
 
     {
-    eventkey:1,
+    eventkey:3,
     title:"House 4 Rent",
     location:"Sentrong Pangkultura ng Biñan",
     date_time: "18 May  |  12:30 AM",
@@ -45,7 +45,7 @@ export const eventData = [
     },
 
     {
-    eventkey:1,
+    eventkey:4,
     title:"BINGO",
     location:"Sentrong Pangkultura ng Biñan",
     date_time: "18 May  |  12:30 AM",

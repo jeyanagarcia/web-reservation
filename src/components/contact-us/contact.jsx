@@ -3,8 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import images from '../../constant/images';
 
+
 const Contact = () => {
   return (
+    
     <div className="w-full h-screen flex flex-col md:flex-row justify-center items-center p-4 ">
       <form action="" className="flex flex-col max-w-[600px] w-full ml-12 mr-12 md:mt-" style={{ marginTop: '18rem' }}>
         <div className="pb-8">
@@ -28,7 +30,9 @@ const Contact = () => {
           <p className="mt-2"><FontAwesomeIcon icon={faEnvelope} /> Example@gmail.com</p>
         </div>
       </div>
+  
     </div>
+    
   );
 };
 
