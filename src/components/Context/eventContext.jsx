@@ -7,6 +7,7 @@ const EventContextProvider = ({ children }) => {
   const [eventt, setEventt] = useState(eventData);
   const [organizer, setOrganizer] = useState([]);
   const [choice, setChoices] = useState('Organizer (any)');
+  const [genre, setGenre] = useState('Genre (any)');
   const [genre1, setGenre1] = useState([]);
   const [genre2, setGenre2] = useState([]);
 
@@ -30,6 +31,8 @@ const EventContextProvider = ({ children }) => {
         setChoices,
         loading,
         setLoading,
+        genre,
+        setGenre,
       }}
     >
       {children}

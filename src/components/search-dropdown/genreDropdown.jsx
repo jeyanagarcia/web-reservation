@@ -9,10 +9,11 @@ const GenreDropdown = () => {
   console.log(eventt);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [choice, setChoice] = useState(genre);
+ 
 
   const handleGenreSelection = (selectedGenre) => {
-    setChoice(selectedGenre);
+    
+    setGenre(selectedGenre);
     setIsOpen(false);
   };
 
@@ -23,7 +24,7 @@ const GenreDropdown = () => {
       <Menu.Button onClick={() => setIsOpen(!isOpen)} className={'dropdown-btn w-full text-left'}>
         <MdPerson className='dropdown-icon-primary' />
         <div className='dropdown-label'>
-          <div className='text-[13px] text-black font-medium leading-tight'>{choice}</div>
+          <div className='text-[13px] text-black font-medium leading-tight'>{genre}</div>
           <div className='text-[12px] text-black'>Select Genre</div>
         </div>
         {isOpen ? (
