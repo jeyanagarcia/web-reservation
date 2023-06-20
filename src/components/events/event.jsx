@@ -27,7 +27,7 @@ const Event = () => {
         ))}
       </div>
       
-      <div className="container mx-auto relative z-10"> {/* Add relative positioning and z-index of 10 */}
+      <div className="container mx-auto relative z-10"> 
         <div className="mt-9 mb-9 ml-4">
           <h1 className="text-5xl font-bold text-left">Upcoming Event</h1>
         </div>

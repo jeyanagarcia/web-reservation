@@ -8,8 +8,7 @@ const EventContextProvider = ({ children }) => {
   const [organizer, setOrganizer] = useState([]);
   const [choice, setChoices] = useState('Organizer (any)');
   const [genre, setGenre] = useState('Genre (any)');
-  const [genre1, setGenre1] = useState([]);
-  const [genre2, setGenre2] = useState([]);
+  
 
   const [loading, setLoading] = useState(false);
 

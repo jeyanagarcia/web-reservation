@@ -5,8 +5,8 @@ import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
 import { MdPerson } from 'react-icons/md';
 
 const OrganizerDropdown = () => {
-  const { choice, setChoices, organizer } = useContext(EventContext);
-  console.log(organizer);
+  const { choice, setChoices, eventt } = useContext(EventContext);
+  console.log(eventt);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -14,6 +14,8 @@ const OrganizerDropdown = () => {
     setChoices(selectedOrg);
     setIsOpen(false);
   };
+
+  const choices = [...new Set(eventt.flatMap((orgg) => [orgg.organization]))];
 
   return (
     <Menu as="div" className="dropdown relative z-50">
@@ -31,14 +33,14 @@ const OrganizerDropdown = () => {
       </Menu.Button>
 
       <Menu.Items className="dropdown-menu">
-        {organizer.map((org, index) => (
+        {choices.map((choice, index) => (
           <Menu.Item
-            onClick={() => handleOrganizationSelection(org)}
+            onClick={() => handleOrganizationSelection(choice)}
             className='cursor-pointer'
             as='li'
             key={index}
           >
-            {org}
+            {choice}
           </Menu.Item>
         ))}
       </Menu.Items>

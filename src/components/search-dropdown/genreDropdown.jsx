@@ -10,7 +10,6 @@ const GenreDropdown = () => {
 
   const [isOpen, setIsOpen] = useState(false);
  
-
   const handleGenreSelection = (selectedGenre) => {
     
     setGenre(selectedGenre);
