@@ -26,7 +26,7 @@ const Login = () => {
         <img className='w-full h-full object-cover' src={images.login} alt="" />
       </div>
 
-      <div className='bg-gray-100 flex flex-col justify-center items-center'>
+      <div className='bg-transparent flex flex-col justify-center items-center'>
         <div className='flex flex-col justify-center'>
           <form className='max-w-[400px] w-full bg-white p-4' onSubmit={signIn}>
             <h2 className='text-4xl font-bold text-center py-6'>Sign In</h2>

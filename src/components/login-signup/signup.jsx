@@ -27,7 +27,7 @@ const Signup = () => {
         <img className='w-full h-full object-cover' src={images.signup} alt="" />
       </div>
 
-      <div className='bg-gray-100 flex flex-col justify-center'>
+      <div className='bg-transparent flex flex-col justify-center'>
         <form className='max-w-[400px] w-full mx-auto bg-white p-4' onSubmit={SignIn}>
           <h2 className='text-4xl font-bold text-center py-6'>Sign In</h2>
           
