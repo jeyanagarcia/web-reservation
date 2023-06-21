@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { EventContext } from '../Context/eventContext';
+import { EventContext } from '../context/eventContext';
 import { Menu } from '@headlessui/react';
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
 import { MdPerson } from 'react-icons/md';

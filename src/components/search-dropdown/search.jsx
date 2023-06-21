@@ -2,7 +2,7 @@ import React from 'react';
 import GenreDropdown from './genreDropdown';
 import OrganizerDropdown from './organizerDropdown';
 import { FaSearch } from 'react-icons/fa';
-import { EventContext } from '../Context/eventContext';
+import { EventContext } from '../context/eventContext';
 
 
 const Search = () => {
