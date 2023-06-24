@@ -10,7 +10,6 @@ import Login from "./components/login-signup/login";
 import SignUp from "./components/login-signup/signup";
 import EventDetails from './components/events/eventDetails';
 
-
 function App() {
   return (
     <Router>
@@ -20,28 +19,21 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/event" element={<Event/>}/>
-          <Route path="/contact-us" element={<ContactUs/>}/>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/signup" element={<SignUp/>}/>
+          <Route path="/event" element={<Event />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
 
-
-          <Route path="/event/:id" element={<EventDetails/>}/>
-        
+          <Route path="/event/:eventKey" element={<EventDetails />} />
         </Routes>
+        
         <Footer />
       </div>
     </Router>
-    
   );
 }
 
 export default App;
 
 
-
-
-
-
-//https://www.youtube.com/watch?v=gXdHvoWvViQ//
 //https://www.figma.com/file/C0uRkPaQZqDesCaNFZm6fY/Event-Reservation-System-team-library?type=design&node-id=0-1&t=YqNjQk08bYJbazGz-0//

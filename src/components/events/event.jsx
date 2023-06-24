@@ -15,7 +15,7 @@ const Event = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 xl:gap-14">
         {eventData.map(event => (
-          <Link to={`/event/${event.eventkey}`} key={event.eventkey}>
+          <Link to={`/event/${event.eventKey}`} key={event.eventKey}>
             <FeaturedEvent
               title={event.title}
               genre1={event.genre1}
@@ -34,27 +34,11 @@ const Event = () => {
         <Search />
       </div>
           
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 xl:gap-14">
-        {eventData.map(event => (
-          <Link to={`/event/${event.eventkey}`} key={event.eventkey}>
-            <UpcomingEvent
-              title={event.title}
-              date_time={event.date_time}
-              genre1={event.genre1}
-              genre2={event.genre2}
-              org={event.organization}
-              price={event.price}
-              transaction={event.transaction}
-              limit={event.limit}
-              src={event.image}
-            />
-          </Link>
-        ))}
-      </div>
+  
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 xl:gap-14">
         {eventData.map(event => (
-          <Link to={`/event/${event.eventkey}`} key={event.eventkey}>
+          <Link to={`/event/${event.eventKey}`} key={event.eventKey}>
             <UpcomingEvent
               title={event.title}
               date_time={event.date_time}
