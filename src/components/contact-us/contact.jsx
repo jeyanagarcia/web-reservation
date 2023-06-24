@@ -23,7 +23,7 @@ const Contact = () => {
 
       <div name="contact-information" className="flex flex-col max-w-[600px] w-full ml-12">
         <div className="pb-8">
-          <img className="icon ml-12 mb-4" src={images.contacticon} style={{ maxWidth: '300px' }} />
+          <img className="icon ml-12 mb-4" src={images.contacticon} style={{ maxWidth: '300px' }} />y
           <p className="text-4xl font-bold text-black mb-6">Get in Touch with Us</p>
           <p><FontAwesomeIcon icon={faLocationDot} /> 83QM+GPF, Old Municipal Building, Biñan, Laguna</p>
           <p className="mt-2"><FontAwesomeIcon icon={faPhone} /> 091234567891</p>

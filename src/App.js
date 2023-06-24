@@ -8,6 +8,7 @@ import Event from "./components/events/event";
 import ContactUs from "./components/contact-us/contact";
 import Login from "./components/login-signup/login";
 import SignUp from "./components/login-signup/signup";
+import EventDetails from './components/events/eventDetails';
 
 
 function App() {
@@ -23,11 +24,15 @@ function App() {
           <Route path="/contact-us" element={<ContactUs/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/signup" element={<SignUp/>}/>
+
+
+          <Route path="/event/:id" element={<EventDetails/>}/>
         
         </Routes>
         <Footer />
       </div>
     </Router>
+    
   );
 }
 
