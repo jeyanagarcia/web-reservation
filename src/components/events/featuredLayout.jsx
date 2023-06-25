@@ -10,7 +10,7 @@ const EventLayout = ({ title, genre1, genre2, date_time, src }) => {
           alt="Event Image"
         />
         <div className="absolute bottom-0 left-0 right-0 px-4 py-2 bg-opacity-40 bg-black text-white">
-          <h3 className="text-base uppercase text-designColor font-normal">{title}</h3>
+          <h3 className="text-base text-designColor font-normal">{title}</h3>
           <div className="text-sm text-white mt-2">{date_time}</div>
           <div className="flex gap-3 mt-2">
           <div className="text-xs px-2 py-1 rounded-full border border-white">{genre1}</div>

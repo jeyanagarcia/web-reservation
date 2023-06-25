@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { eventData } from '../../constant/eventData';
 import FeaturedEvent from './featuredLayout';
 import UpcomingEvent from './upcomingLayout';
-import { eventData } from '../../constant/eventData';
 import Search from '../search-dropdown/search';
 
 const Event = () => {
   return (
-    <section id="projects" className="w-full py-20 border-b-[1px] relative z-0">
+    <section className="w-full py-20 border-b-[1px] relative z-0">
       <div className="container mx-auto">
         <div className="mt-9 mb-9 ml-4">
           <h1 className="text-5xl font-bold text-left">Featured Event</h1>

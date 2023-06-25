@@ -23,7 +23,6 @@ function App() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-
           <Route path="/event/:eventKey" element={<EventDetails />} />
         </Routes>
         

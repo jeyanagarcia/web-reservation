@@ -15,7 +15,7 @@ const UpcomingLayout = ({ title, date_time, genre1, genre2, org, price, transact
       </div>
       <div className="w-full mt-3 mb-3 flex flex-col gap-2">
         <div className="flex items-center justify-between text-black">
-          <div className="text-base uppercase text-designColor font-normal">{title}</div>
+          <div className="text-base text-designColor font-normal">{title}</div>
         </div>
         <div className="text-sm mt-1">{date_time}</div>
         <div className="flex gap-3 mt-1">
