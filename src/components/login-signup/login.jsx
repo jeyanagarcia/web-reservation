@@ -23,12 +23,13 @@ const Login = () => {
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
       <div className='hidden sm:block' style={{ marginTop: '4rem' }}>
-        <img className='w-full h-full object-cover' src={images.login} alt="" />
+        <img className='w-full h-full object-cover' src={images.login} />
       </div>
 
-      <div className='bg-transparent flex flex-col justify-center items-center'>
+      <div className='bg-transparent flex flex-col justify-center items-center '>
         <div className='flex flex-col justify-center'>
-          <form className='max-w-[400px] w-full bg-white p-4' onSubmit={signIn}>
+        <form className='max-w-[500px] w-full bg-transparent p-4 border border-black rounded-lg' onSubmit={signIn}>
+
             <h2 className='text-4xl font-bold text-center py-6'>Sign In</h2>
 
             <div className='flex flex-col py-2 relative'>
@@ -54,7 +55,7 @@ const Login = () => {
             </div>
 
             <button className='rounded-full border w-full my-5 py-2 bg-green-600 hover:bg-green-500 text-white'>Sign In</button>
-            <div className='flex justify-between'>
+            <div className='flex justify-between gap-5'>
               <p className='flex items-center'><input className='mr-2' type="checkbox" /> Remember Me</p>
               <p>Create an account</p>
             </div>

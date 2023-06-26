@@ -28,7 +28,7 @@ const Signup = () => {
       </div>
 
       <div className='bg-transparent flex flex-col justify-center'>
-        <form className='max-w-[400px] w-full mx-auto bg-white p-4' onSubmit={SignIn}>
+        <form className='max-w-[400px] w-full mx-auto bg-transparent p-4 border border-black rounded-lg ' onSubmit={SignIn}>
           <h2 className='text-4xl font-bold text-center py-6'>Sign In</h2>
           
           <div className='flex flex-col py-2'>
