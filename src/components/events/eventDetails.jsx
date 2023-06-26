@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, Link } from 'react-router-dom';
 import { eventData } from '../../constant/eventData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faLocationDot, faUserGroup } from '@fortawesome/free-solid-svg-icons';
 import EventList from './eventList';
+import WelcomeModal from "../login-signup/welcomeModal";
 
 const EventDetails = () => {
   const { eventKey } = useParams();
@@ -12,7 +13,6 @@ const EventDetails = () => {
 
   const randomEvents = eventData ? getRandomUniqueEvents(eventData, 4, parsedEventKey) : [];
 
-  // Function to get random unique events
   function getRandomUniqueEvents(data, count, excludeKey) {
     const events = [...data];
     const randomEvents = [];
@@ -28,22 +28,32 @@ const EventDetails = () => {
     }
 
     return randomEvents;
-  }   
+  }
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openWelcomeModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeWelcomeModal = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <section>
-      <div className="container mx-auto min-h-[400px] mb-14">
-        <div className="flex flex-wrap items-start justify-between lg:flex-nowrap">
-          <div className="mt-24 ml-8 flex">
-            <div className="w-70% bg-gray-300 rounded-lg overflow-hidden">
+      <div className="container mx-auto min-h-[300px] mb-14 ">
+        <div className="flex flex-wrap justify-left lg:flex-nowrap">
+          <div className="container mx-auto mt-32 flex flex-wrap justify-left md:flex-nowrap">
+            <div className="w-full md:w-80 h-auto bg-gray-300 rounded-lg overflow-hidden mb-6 md:mb-0 md:mr-6">
               <img
-                className="w-80 h-full object-cover"
+                className="w-full h-full object-cover"
                 src={eventInfo.image}
                 alt="Event Image"
               />
             </div>
 
-            <div className="p-6 flex flex-col justify-left ml-12">
+            <div className="p-6 flex flex-col justify-left">
               <h1 className="text-4xl font-bold">{eventInfo.title}</h1>
               <div className="flex items-center mt-2">
                 <FontAwesomeIcon icon={faLocationDot} className="mr-2" />
@@ -69,41 +79,53 @@ const EventDetails = () => {
                 </div>
               </div>
               <div className="flex justify-left mt-5">
-                <button className="w-40 h-10 rounded-full shadow-shadowOne flex items-center justify-center 
+                <button
+                  className="w-40 h-10 rounded-full shadow-shadowOne flex items-center justify-center 
                     bg-gradient-to-r from-bodyColor to-[#73d081] group hover:bg-gradient-to-b hover:from-green-200 hover:to-green-300 
-                    transition-colors duration-1000 mx-auto text-black mr-4">Book Now</button>
-
-                <button className="w-40 h-10 rounded-full shadow-shadowOne flex items-center justify-center 
+                    transition-colors duration-1000 mx-auto text-black mr-4"
+                  onClick={openWelcomeModal}
+                >
+                  Book Now
+                </button>
+                <button
+                  className="w-40 h-10 rounded-full shadow-shadowOne flex items-center justify-center 
                     bg-gradient-to-r from-bodyColor to-[#73d081] group hover:bg-gradient-to-b hover:from-green-200 hover:to-green-300 
-                    transition-colors duration-1000 mx-auto text-black mr-4">Wishlist</button>
+                    transition-colors duration-1000 mx-auto text-black mr-4"
+                  onClick={openWelcomeModal}
+                >
+                  Wishlist
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="container relative p-6 flex flex-col justify-left ml-24 mt-4">
-        <h1 className="text-2xl ml-24 font-bold">About The Event</h1>
-        <div className="bg-gray-300 rounded-lg p-6 mt-4 ml-24 w-1/2">
-          <p className="text-justify">{eventInfo.description}</p>
-        </div>       
+      <div className='container mx-auto'>
+        <div className='container mx-auto min-w-[400px]'>
+          <div className="container relative p-6 justify-center">
+            <h1 className="text-2xl font-bold">About The Event</h1>
+            <div className="bg-gray-300 rounded-lg p-6">
+              <p className="text-justify">{eventInfo.description}</p>
+            </div>
+          </div>
+
+          <div className="container relative p-6  justify-center">
+            <h1 className="text-2xl font-bold">Hosts</h1>
+            <div className="bg-gray-300 rounded-lg p-6">
+              <p className="text-justify">{eventInfo.description}</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="container relative p-6 flex flex-col justify-left ml-24 mt-4">
-        <h1 className="text-2xl ml-24 font-bold">Hosts</h1>
-        <div className="bg-gray-300 rounded-lg p-6 mt-4 ml-24 w-1/2">
-          <p className="text-justify">{eventInfo.description}</p>
-        </div>       
-      </div>
-
-      <div className="absolute top-5 right-10">
-      <div className="container relative mt-24 mr-24">
-        <div className="w-full lg:w-2/3">
-          <h1 className="text-2xl font-bold">More Events</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-2">
+      <div className="container mx-auto ">
+        <div className='container mx-auto min-w-[400px]'>
+          <h1 className="text-2xl font-bold ml-5">More Events</h1>
+          <div className="items-center justify-center ml-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-12 mx-auto">
             {randomEvents.map(event => (
               <Link to={`/event/${event.eventKey}`} key={event.eventKey}>
-                <EventList 
+                <EventList
                   src={event.image}
                   title={event.title}
                   genre1={event.genre1}
@@ -117,7 +139,8 @@ const EventDetails = () => {
           </div>
         </div>
       </div>
-      </div>
+
+      {isOpen && <WelcomeModal closeModal={closeWelcomeModal} />}
     </section>
   );
 };

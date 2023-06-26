@@ -7,7 +7,6 @@ const EventLayout = ({ title, genre1, genre2, date_time, src }) => {
         <img
           className="w-full h-full object-cover transition-transform duration-300 cursor-pointer transform group-hover:scale-105"
           src={src}
-          alt="Event Image"
         />
         <div className="absolute bottom-0 left-0 right-0 px-4 py-2 bg-opacity-40 bg-black text-white">
           <h3 className="text-base text-designColor font-normal">{title}</h3>

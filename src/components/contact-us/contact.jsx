@@ -3,12 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import images from '../../constant/images';
 
-
 const Contact = () => {
   return (
-    
     <div className="w-full h-screen flex flex-col md:flex-row justify-center items-center p-4 ">
-      <form action="" className="flex flex-col max-w-[600px] w-full ml-12 mr-12 md:mt-" style={{ marginTop: '18rem' }}>
+      <form action="" className="flex flex-col max-w-[600px] w-full ml-12 mr-12 md:mt-8">
         <div className="pb-8">
           <p className="text-4xl font-bold text-black">Contact Us</p>
           <p className="text-black py-4">We are here for you. How can we help?</p>
@@ -21,7 +19,7 @@ const Contact = () => {
           transition-colors duration-1000 mx-auto text-black">Submit</button>
       </form>
 
-      <div name="contact-information" className="flex flex-col max-w-[600px] w-full ml-12">
+      <div name="contact-information" className="flex flex-col max-w-[600px] w-full ml-12 md:mt-8">
         <div className="pb-8">
           <img className="icon ml-12 mb-4" src={images.contacticon} style={{ maxWidth: '300px' }} />
           <p className="text-4xl font-bold text-black mb-6">Get in Touch with Us</p>
@@ -30,9 +28,7 @@ const Contact = () => {
           <p className="mt-2"><FontAwesomeIcon icon={faEnvelope} /> Example@gmail.com</p>
         </div>
       </div>
-  
     </div>
-    
   );
 };
 

@@ -3,12 +3,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from "./constant/header";
 import Footer from "./constant/footer"
 import Home from "./components/home";
-import Blog from "./components/blog/blog";
+import Article from "./components/blog/blog";
 import Event from "./components/events/event";
 import ContactUs from "./components/contact-us/contact";
 import Login from "./components/login-signup/login";
 import SignUp from "./components/login-signup/signup";
 import EventDetails from './components/events/eventDetails';
+import BlogDetails from "./components/blog/blogDetails";
 
 function App() {
   return (
@@ -18,12 +19,14 @@ function App() {
         
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<Blog />} />
+          <Route path="/article" element={<Article />} />
           <Route path="/event" element={<Event />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/event/:eventKey" element={<EventDetails />} />
+          <Route path="/article/:articleKey" element={<BlogDetails /> }/>
+          
         </Routes>
         
         <Footer />

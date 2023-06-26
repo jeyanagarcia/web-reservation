@@ -23,7 +23,7 @@ const Navbar = () => {
         <li>
         <Link to="/">Home</Link></li>
         <li>
-        <Link to="/blog">Blog</Link></li>
+        <Link to="/article">Blog</Link></li>
         <li>
         <Link to="/event">Events</Link></li>
         <li>
@@ -53,7 +53,7 @@ const Navbar = () => {
           <Link to="/">Home</Link></li>
           
           <li className='border-b'>
-          <Link to="/blog">Blog</Link></li>
+          <Link to="/article">Blog</Link></li>
           
           <li className='border-b'>
           <Link to="/event">Events</Link></li>

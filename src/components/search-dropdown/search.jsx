@@ -2,12 +2,9 @@ import React from 'react';
 import GenreDropdown from './genreDropdown';
 import OrganizerDropdown from './organizerDropdown';
 import { FaSearch } from 'react-icons/fa';
-import { EventContext } from '../context/eventContext';
-
 
 const Search = () => {
  
-
   return (
     <div className='flex flex-col lg:flex-row justify-end items-center gap-2 lg:gap-1 relative lg:-top-4 lg:shadow-1 bg-white lg:bg-transparent lg:backdrop-blur rounded-lg'>
       <div className="mr-2 lg:mr-4">
