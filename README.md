@@ -68,3 +68,34 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### `npm run Test`
+
+Testing Case
+
+Test Suites: 1 passed, 1 total
+Tests:       14 passed, 14 total
+Snapshots:   0 total
+Time:        7.705 s
+Ran all test suites related to changed files.
+ PASS  src/components/__test__/mytest.test.js
+  √ render introductory video from home (48 ms)
+  √ render Experience the Thrill at Binan (12 ms)
+  √ Render the "Explore the city of life!" text (7 ms)
+  √ Render event Title (13 ms)
+  √ Render event price (8 ms)
+  √ Render event date and time (10 ms)
+  √ Render event organization (5 ms)
+  √ Render event location (5 ms)
+  √ Render event image (6 ms)
+  √ Render Blog Title (7 ms)
+  √ Render Blog Date (6 ms)
+  √ Render Blog Organization (5 ms)
+  √ Render Blog image (6 ms)
+  √ Render Blog Description (5 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       14 passed, 14 total
+Snapshots:   0 total
+Time:        5.743 s, estimated 6 s
+Ran all test suites related to changed files.
