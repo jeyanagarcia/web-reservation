@@ -6,7 +6,7 @@ import images from '../../constant/images';
 const Contact = () => {
   return (
     <div className="w-full h-screen flex flex-col md:flex-row justify-center items-center p-4 ">
-      <form action="" className="flex flex-col max-w-[600px] w-full ml-12 mr-12 md:mt-8">
+      <form action="" className="flex flex-col max-w-[600px] w-full ml-12 mr-12 md:mt-12">
         <div className="pb-8">
           <p className="text-4xl font-bold text-black">Contact Us</p>
           <p className="text-black py-4">We are here for you. How can we help?</p>

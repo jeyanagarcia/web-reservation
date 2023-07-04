@@ -55,10 +55,17 @@
         padding: 0;
         margin: 0;
         justify-content: center;
-        background-color: rgba(132, 215, 160, 0.8); /* Use rgba format with opacity value */
+        background-color: rgba(132, 215, 160, 0.8);
         z-index: 20;
     }
 
+    .navbar {
+        background-color: rgba(132, 215, 160, 1); 
+        transition: background-color 0.3s;
+      }
+      
+    
+      
       
       
       
