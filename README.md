@@ -73,29 +73,45 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 Testing Case
 
-Test Suites: 1 passed, 1 total
-Tests:       14 passed, 14 total
-Snapshots:   0 total
-Time:        7.705 s
-Ran all test suites related to changed files.
  PASS  src/components/__test__/mytest.test.js
-  √ render introductory video from home (48 ms)
-  √ render Experience the Thrill at Binan (12 ms)
-  √ Render the "Explore the city of life!" text (7 ms)
-  √ Render event Title (13 ms)
-  √ Render event price (8 ms)
-  √ Render event date and time (10 ms)
-  √ Render event organization (5 ms)
-  √ Render event location (5 ms)
-  √ Render event image (6 ms)
-  √ Render Blog Title (7 ms)
-  √ Render Blog Date (6 ms)
-  √ Render Blog Organization (5 ms)
-  √ Render Blog image (6 ms)
-  √ Render Blog Description (5 ms)
+  √ render introductory video from home (68 ms)
+  √ render Experience the Thrill at Binan (15 ms)
+  √ Render the "Explore the city of life!" text (11 ms)
+  √ Render event Title (29 ms)
+  √ Render event price (15 ms)
+  √ Render event date and time (16 ms)
+  √ Render event organization (17 ms)
+  √ Render event location (12 ms)
+  √ Render event image (15 ms)
+  √ Render Blog Title (18 ms)
+  √ Render Blog Date (23 ms)
+  √ Render Blog Organization (15 ms)
+  √ Render Blog image (13 ms)
+  √ Render Blog Description (12 ms)
+  EventLayout component
+    √ renders event details correctly (20 ms)
+  UpcomingLayout component
+    √ renders upcoming event details correctly (19 ms)
 
+---------------------|---------|----------|---------|---------|-------------------
+File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+---------------------|---------|----------|---------|---------|-------------------
+All files            |   92.85 |      100 |   83.33 |   92.85 |                   
+ src                 |       0 |      100 |       0 |       0 |                   
+  App.js             |       0 |      100 |       0 |       0 | 8                 
+ src/components      |     100 |      100 |     100 |     100 |                   
+  Blog.jsx           |     100 |      100 |     100 |     100 |                   
+  event.jsx          |     100 |      100 |     100 |     100 |                   
+  featuredLayout.jsx |     100 |      100 |     100 |     100 |                   
+  home.jsx           |     100 |      100 |     100 |     100 |                   
+  upcomingLayout.jsx |     100 |      100 |     100 |     100 |                   
+ src/constant        |     100 |      100 |     100 |     100 |                   
+  blogData.jsx       |     100 |      100 |     100 |     100 |                   
+  eventData.jsx      |     100 |      100 |     100 |     100 | 
+  images.jsx         |     100 |      100 |     100 |     100 | 
+---------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 passed, 1 total
-Tests:       14 passed, 14 total
+Tests:       16 passed, 16 total
 Snapshots:   0 total
-Time:        5.743 s, estimated 6 s
+Time:        7.114 s, estimated 12 s
 Ran all test suites related to changed files.
