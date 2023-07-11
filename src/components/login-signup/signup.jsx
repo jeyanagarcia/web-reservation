@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { auth } from "../../config/firebase"
 import images from '../../constant/images'
 
@@ -29,7 +30,7 @@ const Signup = () => {
 
       <div className='bg-transparent flex flex-col justify-center'>
         <form className='max-w-[400px] w-full mx-auto bg-transparent p-4 border border-black rounded-lg ' onSubmit={SignIn}>
-          <h2 className='text-4xl font-bold text-center py-6'>Sign In</h2>
+          <h2 className='text-4xl font-bold text-center py-6'>Sign Up</h2>
           
           <div className='flex flex-col py-2'>
           <input
@@ -89,4 +90,4 @@ const Signup = () => {
   );
 };
 
-export default Signup
+export default Signup;

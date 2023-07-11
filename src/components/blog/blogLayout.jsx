@@ -2,7 +2,7 @@ import React from 'react';
 
 const BlogLayout = ({ title, des, src, date, org }) => {
   return (
-    <div className="w-full p-4 xl:px-12 h-auto xl:py-10 rounded-lg shadow-shadowOne flex flex-col bg-gradient-to-r from-bodyColor to-[#73d081] group hover:bg-gradient-to-b hover:from-green-200 hover:to-green-300 transition-colors duration-1000">
+    <div className="w-full p-4 xl:px-12 h-auto xl:py-10 rounded-lg shadow-md bg-gray-200 group hover:bg-gray-300 hover:bg-[#7a7a7a] transition-colors duration-1000">
       <div className="w-full h-[80%] overflow-hidden rounded-lg">
         <img
           className="w-full h-60 object-cover group-hover:scale-110 duration-300 cursor-pointer"
@@ -21,7 +21,7 @@ const BlogLayout = ({ title, des, src, date, org }) => {
               {title}
             </h3>
           </div>
-          <p className="text-sm tracking-wide mt-3 hover:text-gray- duration-300">
+          <p className="text-sm tracking-wide mt-3 hover:text-gray-700 duration-300">
             {des}
           </p>
         </div>

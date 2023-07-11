@@ -10,6 +10,8 @@ import Login from "./components/login-signup/login";
 import SignUp from "./components/login-signup/signup";
 import EventDetails from './components/events/eventDetails';
 import BlogDetails from "./components/blog/blogDetails";
+import './index.css'
+
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
           <Route path="/article/:articleKey" element={<BlogDetails /> }/>
           
         </Routes>
+        
         
         <Footer />
       </div>

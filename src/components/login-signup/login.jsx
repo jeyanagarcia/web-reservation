@@ -57,6 +57,7 @@ const Login = () => {
             <button className='rounded-full border w-full my-5 py-2 bg-green-600 hover:bg-green-500 text-white'>Sign In</button>
             <div className='flex justify-between gap-5'>
               <p className='flex items-center'><input className='mr-2' type="checkbox" /> Remember Me</p>
+              <br></br>
               <p>Create an account</p>
             </div>
             <p className='flex justify-center mt-4'>Forgot Password?</p>

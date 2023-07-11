@@ -1,4 +1,4 @@
-import login from '../assets/login.png';
+import login from '../assets/signup.png';
 import signup from '../assets/signup.png';
 import blog1 from '../assets/blgimg1.png';
 import blog2 from '../assets/blgimg2.png';
