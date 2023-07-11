@@ -74,45 +74,66 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 Testing Case
 
  PASS  src/components/__test__/mytest.test.js
-  √ render introductory video from home (68 ms)
-  √ render Experience the Thrill at Binan (15 ms)
-  √ Render the "Explore the city of life!" text (11 ms)
-  √ Render event Title (29 ms)
-  √ Render event price (15 ms)
-  √ Render event date and time (16 ms)
-  √ Render event organization (17 ms)
-  √ Render event location (12 ms)
-  √ Render event image (15 ms)
-  √ Render Blog Title (18 ms)
-  √ Render Blog Date (23 ms)
-  √ Render Blog Organization (15 ms)
-  √ Render Blog image (13 ms)
-  √ Render Blog Description (12 ms)
+  Introductory Video
+    √ render introductory video from home (29 ms)
+  Title Text
+    √ render Experience the Thrill at Binan (8 ms)
+  Sub Title text
+    √ Render the "Explore the city of life!" text (6 ms)
+  Blog Organization
+    √ Render event Title (10 ms)
+    √ Render Blog Organization (7 ms)
+  Event Price
+    √ Render event price (8 ms)
+  Event date and time
+    √ Render event date and time (8 ms)
+  Event Organization
+    √ Render event organization (7 ms)
+  Event Location
+    √ Render event location (7 ms)
+  Event Image
+    √ Render event image (7 ms)
+  Blog Title
+    √ Render Blog Title (10 ms)
+  Blog Date
+    √ Render Blog Date (12 ms)
+  Blog Image
+    √ Render Blog image (5 ms)
+  Blog Description
+    √ Render Blog Description (6 ms)
   EventLayout component
-    √ renders event details correctly (20 ms)
+    √ renders event details correctly (10 ms)
   UpcomingLayout component
-    √ renders upcoming event details correctly (19 ms)
-
+    √ renders upcoming event details correctly (9 ms)                                                                                                                    
+                                                                                                                                                                         
 ---------------------|---------|----------|---------|---------|-------------------
-File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                                                                                        
 ---------------------|---------|----------|---------|---------|-------------------
-All files            |   92.85 |      100 |   83.33 |   92.85 |                   
- src                 |       0 |      100 |       0 |       0 |                   
-  App.js             |       0 |      100 |       0 |       0 | 8                 
- src/components      |     100 |      100 |     100 |     100 |                   
-  Blog.jsx           |     100 |      100 |     100 |     100 |                   
-  event.jsx          |     100 |      100 |     100 |     100 |                   
-  featuredLayout.jsx |     100 |      100 |     100 |     100 |                   
-  home.jsx           |     100 |      100 |     100 |     100 |                   
-  upcomingLayout.jsx |     100 |      100 |     100 |     100 |                   
- src/constant        |     100 |      100 |     100 |     100 |                   
-  blogData.jsx       |     100 |      100 |     100 |     100 |                   
+All files            |   92.85 |      100 |   83.33 |   92.85 | 
+ src                 |       0 |      100 |       0 |       0 | 
+  App.js             |       0 |      100 |       0 |       0 | 8
+ src/components      |     100 |      100 |     100 |     100 | 
+  Blog.jsx           |     100 |      100 |     100 |     100 | 
+  event.jsx          |     100 |      100 |     100 |     100 | 
+  featuredLayout.jsx |     100 |      100 |     100 |     100 | 
+  home.jsx           |     100 |      100 |     100 |     100 | 
+  upcomingLayout.jsx |     100 |      100 |     100 |     100 | 
+ src/constant        |     100 |      100 |     100 |     100 | 
+  blogData.jsx       |     100 |      100 |     100 |     100 | 
   eventData.jsx      |     100 |      100 |     100 |     100 | 
   images.jsx         |     100 |      100 |     100 |     100 | 
 ---------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 passed, 1 total
 Tests:       16 passed, 16 total
 Snapshots:   0 total
-Time:        7.114 s, estimated 12 s
+Time:        3.873 s
 Ran all test suites related to changed files.
+
+Watch Usage
+ › Press a to run all tests.
+ › Press f to run only failed tests.
+ › Press q to quit watch mode.
+ › Press p to filter by a filename regex pattern.
+ › Press t to filter by a test name regex pattern.
+ › Press Enter to trigger a test run.
 
