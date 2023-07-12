@@ -1,27 +1,30 @@
 import React, { useState } from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
-import { auth } from "../../config/firebase"
-import images from '../../constant/images'
-
+import { Link, useNavigate } from 'react-router-dom';
+import { useUserAuth } from "../context/authContext";
+import images from '../../constant/images';
 
 const Signup = () => {
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repassword, setRepassword] = useState('');
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [error, setError] = useState('');
+  const { createUser } = useUserAuth();
+  const navigate = useNavigate();
 
-  const SignIn = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      console.log(userCredential)
-    })
-    .catch((error) => {
-      console.log(error)
-    });
+    setError('');
+    try {
+      await createUser(email, password);
+      navigate('/event');
+    } catch (e) {
+      setError(e.message);
+      console.log(e.message);
+    }
   };
+
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
       <div className='hidden sm:block'style={{ marginTop: '4rem' }}>
@@ -29,7 +32,7 @@ const Signup = () => {
       </div>
 
       <div className='bg-transparent flex flex-col justify-center'>
-        <form className='max-w-[400px] w-full mx-auto bg-transparent p-4 border border-black rounded-lg ' onSubmit={SignIn}>
+        <form className='max-w-[400px] w-full mx-auto bg-transparent p-4 border border-black rounded-lg ' onSubmit={handleSubmit}>
           <h2 className='text-4xl font-bold text-center py-6'>Sign Up</h2>
           
           <div className='flex flex-col py-2'>

@@ -1,24 +1,33 @@
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import {auth} from "../../config/firebase";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import images from '../../constant/images';
+import { useUserAuth } from '../context/authContext';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const { signIn } = useUserAuth();
 
-  const signIn = (e) => {
+
+{/*sample account user test@test.com pass qwertyuiop */}
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      console.log(userCredential)
-    })
-    .catch((error) => {
-      console.log(error)
-    });
+    setError('');
+    try {
+      await signIn(email, password);
+      navigate('/user-profile')
+    } catch (e) {
+      setError(e.message);
+      console.log(e.message);
+    }
   };
+
 
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
@@ -28,7 +37,7 @@ const Login = () => {
 
       <div className='bg-transparent flex flex-col justify-center items-center '>
         <div className='flex flex-col justify-center'>
-        <form className='max-w-[500px] w-full bg-transparent p-4 border border-black rounded-lg' onSubmit={signIn}>
+        <form className='max-w-[500px] w-full bg-transparent p-4 border border-black rounded-lg' onSubmit={handleSubmit}> 
 
             <h2 className='text-4xl font-bold text-center py-6'>Sign In</h2>
 
@@ -58,7 +67,9 @@ const Login = () => {
             <div className='flex justify-between gap-5'>
               <p className='flex items-center'><input className='mr-2' type="checkbox" /> Remember Me</p>
               <br></br>
+              <Link to = '/signup'>
               <p>Create an account</p>
+              </Link>
             </div>
             <p className='flex justify-center mt-4'>Forgot Password?</p>
           </form>

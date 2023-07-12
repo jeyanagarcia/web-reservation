@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthContextProvider } from "./components/context/authContext";
 import Header from "./constant/header";
 import Footer from "./constant/footer"
 import Home from "./components/home";
@@ -10,15 +11,19 @@ import Login from "./components/login-signup/login";
 import SignUp from "./components/login-signup/signup";
 import EventDetails from './components/events/eventDetails';
 import BlogDetails from "./components/blog/blogDetails";
+import UserProfile from "./components/user/UserProfile";
 import './index.css'
+import ProtectedRoute from "./components/context/protectedRoute";
+import Booking from "./components/events/booking";
 
 
 function App() {
   return (
     <Router>
-      <div>
+      
         <Header />
         
+        <AuthContextProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/article" element={<Article />} />
@@ -28,12 +33,15 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/event/:eventKey" element={<EventDetails />} />
           <Route path="/article/:articleKey" element={<BlogDetails /> }/>
+          <Route path="/user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+          <Route path="/booking/:eventKey" element={<ProtectedRoute><Booking /></ProtectedRoute>} />
           
         </Routes>
+        </AuthContextProvider>
         
         
         <Footer />
-      </div>
+      
     </Router>
   );
 }

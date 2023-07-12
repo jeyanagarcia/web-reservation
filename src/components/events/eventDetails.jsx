@@ -1,44 +1,38 @@
-import React, { useState } from "react";
-import { useParams, Link } from 'react-router-dom';
-import { eventData } from '../../constant/eventData';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faLocationDot, faUserGroup } from '@fortawesome/free-solid-svg-icons';
-import EventList from './eventList';
-import WelcomeModal from "../login-signup/welcomeModal";
+import WelcomeModal from '../login-signup/welcomeModal';
+import EventGenerator from './eventGenerator'; 
+import { eventData } from '../../constant/eventData'; 
+import { useUserAuth } from '../context/authContext';
 
 const EventDetails = () => {
   const { eventKey } = useParams();
   const parsedEventKey = parseInt(eventKey);
   const eventInfo = eventData.find(event => event.eventKey === parsedEventKey);
 
-  const randomEvents = eventData ? getRandomUniqueEvents(eventData, 4, parsedEventKey) : [];
-
-  function getRandomUniqueEvents(data, count, excludeKey) {
-    const events = [...data];
-    const randomEvents = [];
-
-    while (randomEvents.length < count && events.length > 1) {
-      const randomIndex = Math.floor(Math.random() * events.length);
-      const randomEvent = events[randomIndex];
-
-      if (randomEvent.eventKey !== excludeKey) {
-        randomEvents.push(randomEvent);
-        events.splice(randomIndex, 1);
-      }
-    }
-
-    return randomEvents;
-  }
-
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const { user, isLoading } = useUserAuth();
 
   const openWelcomeModal = () => {
-    setIsOpen(true);
+    if (user) {
+      navigate(`/booking/${parsedEventKey}`);
+    } else {
+      setIsOpen(true);
+    }
   };
 
   const closeWelcomeModal = () => {
-    setIsOpen(!isOpen);
+    setIsOpen(false);
   };
+
+  useEffect(() => {
+    if (!isLoading && user) {
+      setIsOpen(false); 
+    }
+  }, [isLoading, user]);
 
   return (
     <section>
@@ -78,6 +72,7 @@ const EventDetails = () => {
                   <span>{eventInfo.limit}</span>
                 </div>
               </div>
+
               <div className="flex justify-left mt-5">
                 <button
                   className="w-40 h-10 rounded-full shadow-shadowOne flex items-center justify-center 
@@ -96,6 +91,7 @@ const EventDetails = () => {
                   Wishlist
                 </button>
               </div>
+              
             </div>
           </div>
         </div>
@@ -119,26 +115,7 @@ const EventDetails = () => {
         </div>
       </div>
 
-      <div className="container mx-auto ">
-        <div className='container mx-auto min-w-[400px]'>
-          <h1 className="text-2xl font-bold ml-5">More Events</h1>
-          <div className="items-center justify-center ml-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-12 mx-auto">
-            {randomEvents.map(event => (
-              <Link to={`/event/${event.eventKey}`} key={event.eventKey}>
-                <EventList
-                  src={event.image}
-                  title={event.title}
-                  genre1={event.genre1}
-                  genre2={event.genre2}
-                  date_time={event.date_time}
-                  price={event.price}
-                  limit={event.limit}
-                />
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
+      <EventGenerator eventData={eventData} count={4} excludeKey={parsedEventKey} />
 
       {isOpen && <WelcomeModal closeModal={closeWelcomeModal} />}
     </section>
