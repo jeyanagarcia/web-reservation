@@ -85,7 +85,7 @@ const Navbar = () => {
          
           <ul className='hidden md:flex'>
             <li>
-              <Link to="/profile">Profile</Link>
+              <Link to="/user-profile">Profile</Link>
             </li>
             <li>
               <div onClick={handleLogout}>
