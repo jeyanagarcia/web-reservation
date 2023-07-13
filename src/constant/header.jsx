@@ -60,7 +60,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className={`flex w-full justify-between items-center h-20 px-4 absolute z-10 text-black navbar`}>
+    <div className={` flex w-full justify-between items-center h-20 px-4 z-10 text-black navbar sticky top-0 ` }>
       <div>
         <h1>Biñan</h1>
       </div>
