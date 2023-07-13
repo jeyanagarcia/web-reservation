@@ -27,17 +27,17 @@ const Signup = () => {
 
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
-      <div className='hidden sm:block'style={{ marginTop: '4rem' }}>
+      <div className='hidden sm:block'style={{ marginTop: '0rem' }}>
         <img className='w-full h-full object-cover' src={images.signup} alt="" />
       </div>
 
       <div className='bg-transparent flex flex-col justify-center'>
-        <form className='max-w-[400px] w-full mx-auto bg-transparent p-4 border border-black rounded-lg ' onSubmit={handleSubmit}>
+        <form className='max-w-[400px] w-full mx-auto bg-transparent p-4' onSubmit={handleSubmit}>
           <h2 className='text-4xl font-bold text-center py-6'>Sign Up</h2>
           
           <div className='flex flex-col py-2'>
           <input
-                className='border border-black p-2 rounded-lg pl-10 w-full'
+                className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full'
                 type="text"
                 placeholder='Firstname'
                 value={firstname}
@@ -47,7 +47,7 @@ const Signup = () => {
 
           <div className='flex flex-col py-2'>
           <input
-                className='border border-black p-2 rounded-lg pl-10 w-full'
+                className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full'
                 type="text"
                 placeholder='Lastname'
                 value={lastname}
@@ -57,7 +57,7 @@ const Signup = () => {
 
           <div className='flex flex-col py-2'>
           <input
-                className='border border-black p-2 rounded-lg pl-10 w-full'
+                className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full'
                 type="email"
                 placeholder='Email'
                 value={email}
@@ -67,7 +67,7 @@ const Signup = () => {
 
           <div className='flex flex-col py-2'>
           <input
-                className='border border-black p-2 rounded-lg pl-10 w-full'
+                className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full'
                 type="password"
                 placeholder='Password'
                 value={password}
@@ -77,7 +77,7 @@ const Signup = () => {
           
           <div className='flex flex-col py-2'>
           <input
-                className='border border-black p-2 rounded-lg pl-10 w-full'
+                className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full'
                 type="password"
                 placeholder='Retype Password'
                 value={repassword}
@@ -85,7 +85,7 @@ const Signup = () => {
                 />
           </div>
           
-          <button className='rounded-5 border w-full my-5 py-2 bg-green-600 hover:bg-green-500 text-white'>Sign Up</button>
+          <button className='rounded-full border w-full my-5 py-2 bg-gray-300 hover:bg-gray-200 text-black'>Sign Up</button>
 
         </form>
       </div>
