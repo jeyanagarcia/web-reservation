@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faLocationDot, faUserGroup } from '@fortawesome/free-solid-svg-icons';
-import WelcomeModal from '../login-signup/welcomeModal';
-import EventGenerator from './eventGenerator'; 
 import { eventData } from '../../constant/eventData'; 
 import { useUserAuth } from '../context/authContext';
+import WelcomeModal from '../login-signup/welcomeModal';
+import EventGenerator from './eventGenerator'; 
+
 
 const EventDetails = () => {
   const { eventKey } = useParams();

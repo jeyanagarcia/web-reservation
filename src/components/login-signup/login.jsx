@@ -16,17 +16,17 @@ const Login = () => {
 {/*sample account user test@test.com pass qwertyuiop */}
 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError('');
-    try {
-      await signIn(email, password);
-      navigate('/user-profile')
-    } catch (e) {
-      setError(e.message);
-      console.log(e.message);
-    }
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError('');
+  try {
+    await signIn(email, password);
+    navigate('/event');
+  } catch (e) {
+    setError(e.message);
+    console.log(e.message);
+  }
+};
 
 
   return (

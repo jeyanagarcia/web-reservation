@@ -8,11 +8,11 @@ const WelcomeModal = ({ closeModal, openModal }) => {
       <div className="fixed inset-0 flex items-center justify-center z-50">
         <div className="bg-white w-96 p-6 rounded-lg shadow-md relative">
         <button
-  className="absolute top-0 right-0 m-3 p-2 border-b-gray-500 text-black hover:text-gray-700 hover:bg-red-500 bg-transparent"
-  onClick={closeModal}
->
-  <FontAwesomeIcon icon={faTimes} />
-</button>
+            className="absolute top-0 right-0 m-3 p-2 border-b-gray-500 text-black hover:text-gray-700 hover:bg-red-500 bg-transparent"
+            onClick={closeModal}
+          >
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
 
         <h1 className="text-4xl font-bold mb-8 text-center">Discover Biñan</h1>
         <div className="flex items-center justify-center mb-5">

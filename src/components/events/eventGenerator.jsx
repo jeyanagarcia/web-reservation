@@ -6,8 +6,6 @@ export function getRandomUniqueEvents(data, count, excludeKey) {
   const events = [...data];
   const randomEvents = [];
 
-  
-
   while (randomEvents.length < count && events.length > 1) {
     const randomIndex = Math.floor(Math.random() * events.length);
     const randomEvent = events[randomIndex];

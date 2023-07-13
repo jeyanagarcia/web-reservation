@@ -1,16 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { HiOutlineMenuAlt4 } from 'react-icons/hi';
-import { FaFacebook, FaTwitter, FaInstagram, FaGoogle, FaYoutube } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { useUserAuth } from "../components/context/authContext";
+import { FaFacebook, FaTwitter, FaInstagram, FaGoogle, FaYoutube, FaUserCircle } from 'react-icons/fa';
+
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  const { user, logout } = useUserAuth();
+  const navigate = useNavigate();
   const [nav, setNav] = useState(false);
   const [logo, setLogo] = useState(false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false); 
+
   const handleNav = () => {
     setNav(!nav);
     setLogo(!logo);
   };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      setIsUserLoggedIn(false); 
+      navigate('/login'); 
+      console.log('You are logged out')
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,9 +45,18 @@ const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll);
 
+    
+    setIsUserLoggedIn(!!user);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
+  }, [user, logout, navigate]);
+
+  
+    useEffect(() => {
+    
+    setIsUserLoggedIn(true);
   }, []);
 
   return (
@@ -36,7 +64,6 @@ const Navbar = () => {
       <div>
         <h1>Biñan</h1>
       </div>
-
 
       <ul className='hidden md:flex'>
         <li>
@@ -54,14 +81,29 @@ const Navbar = () => {
       </ul>
 
       <div className='hidden md:flex'>
-        <ul className='hidden md:flex'>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/signup">Sign Up</Link>
-          </li>
-        </ul>
+        {isUserLoggedIn ? (
+         
+          <ul className='hidden md:flex'>
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
+            <li>
+              <div onClick={handleLogout}>
+              Logout
+              </div>
+            </li>
+          </ul>
+        ) : (
+      
+          <ul className='hidden md:flex'>
+            <li>
+              <Link to="/signup">Sign Up</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          </ul>
+        )}
       </div>
 
       <div onClick={handleNav} className='md:hidden z-10'>
@@ -89,11 +131,19 @@ const Navbar = () => {
           </li>
 
           <div className='flex flex-col'>
-            <Link to="/login">
-              <button className='rounded-full border w-full my-5 py-2 bg-green-600 hover:bg-green-500 text-white'>
-                Account
-              </button>
-            </Link>
+            {isUserLoggedIn ? (
+              <Link to="/profile">
+                <button className='rounded-full border w-full my-5 py-2 bg-green-600 hover:bg-green-500 text-white'>
+                  <FaUserCircle />
+                </button>
+              </Link>
+            ) : (
+              <Link to="/login">
+                <button className='rounded-full border w-full my-5 py-2 bg-green-600 hover:bg-green-500 text-white'>
+                  Account
+                </button>
+              </Link>
+            )}
           </div>
 
           <div className='flex justify-between my-6'>
