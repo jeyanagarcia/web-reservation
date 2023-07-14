@@ -1,14 +1,25 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../../config/firebase';
+import { auth, db } from '../../config/firebase';
+import { doc, onSnapshot, setDoc } from 'firebase/firestore';
 
 export const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
-  const createUser = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
+  const createUser = (email, firstname, lastname, password) => {
+    return createUserWithEmailAndPassword(auth, email, password).then(async (result) => {
+      const userRef = doc(db, 'users', result.user.uid);
+      const userData = {
+        email: result.user.email,
+        firstname: firstname,
+        lastname: lastname,
+        password: password,
+      };
+      await setDoc(userRef, userData);
+      return result;
+    });
   };
 
   const signIn = (email, password) => {
@@ -23,6 +34,21 @@ export const AuthContextProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser);
       setUser(currentUser);
+
+      if (currentUser) {
+        const userRef = doc(db, 'users', currentUser.uid);
+        onSnapshot(userRef, (snapshot) => {
+          if (snapshot.exists()) {
+            const userData = snapshot.data();
+            setUser((prevUser) => ({
+              ...prevUser,
+              firstname: userData.firstname,
+              lastname: userData.lastname,
+             
+            }));
+          }
+        });
+      }
     });
     return () => {
       unsubscribe();
