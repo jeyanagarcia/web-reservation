@@ -46,7 +46,7 @@ const Header = () => {
 
   return (
     <div
-      className={`flex w-full justify-between items-center h-20 px-4 z-10 text-black navbar sticky top-0 `}
+      className={`flex w-full justify-between items-center h-20 px-4 z-10 text-black navbar sticky top-0 backdrop-blur-lg bg-white/30`}
     >
       <div>
         <h1>Biñan</h1>

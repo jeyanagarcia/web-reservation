@@ -23,19 +23,19 @@ const BirthdaySelector = ({ selectedDay, setSelectedDay, selectedMonth, setSelec
   const years = Array.from({ length: 100 }, (_, index) => 2023 - index);
 
   return (
-    <div className="w-72 font-medium">
+    <div className="w-72 font-medium ">
       <div
         onClick={() => setOpen(!open)}
-        className={`bg-white w-full p-2 flex items-center justify-between rounded ${
+        className={`bg-transparent w-full p-2 flex items-center justify-between rounded  ${
           selectedDay || selectedMonth || selectedYear ? 'text-gray-700' : ''
         }`}
       >
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 ">
           <div className="relative">
             <select
               value={selectedMonth}
               onChange={(e) => setSelectedMonth(e.target.value)}
-              className="block appearance-none w-28 bg-transparent border border-gray-400 px-2 py-1 rounded-full focus:outline-none focus:border-black"
+              className="block appearance-none w-28 bg-transparent border border-gray-400 px-2 py-1 rounded-full focus:outline-none focus:border-black "
             >
               {months.map((month) => (
                 <option key={month.value} value={month.value}>
@@ -43,7 +43,7 @@ const BirthdaySelector = ({ selectedDay, setSelectedDay, selectedMonth, setSelec
                 </option>
               ))}
             </select>
-            <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+            <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none bg-transparent">
               <BiChevronDown size={20} />
             </div>
           </div>
@@ -77,7 +77,7 @@ const BirthdaySelector = ({ selectedDay, setSelectedDay, selectedMonth, setSelec
                 </option>
               ))}
             </select>
-            <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+            <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none bg-transparent">
               <BiChevronDown size={20} />
             </div>
           </div>
