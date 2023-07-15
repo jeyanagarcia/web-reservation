@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUserAuth } from '../context/authContext';
+import UserImage from './userImage';
 
 const UserProfile = () => {
   const { user } = useUserAuth();
@@ -28,7 +29,6 @@ const UserProfile = () => {
             <td>
               <button
                 className="border border-gray-300 hover:border-black rounded-full py-1 px-4"
-                
               >
                 Change
               </button>
@@ -97,6 +97,10 @@ const UserProfile = () => {
           </tr>
         </tbody>
       </table>
+      <div>
+        <UserImage />
+      </div>
+
     </div>
   );
 };

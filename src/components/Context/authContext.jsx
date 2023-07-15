@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
-import { auth, db } from '../../config/firebase';
+import { auth, db, storage, ref, uploadBytes, getDownloadURL } from '../../config/firebase';
 import { doc, onSnapshot, setDoc } from 'firebase/firestore';
 
 export const UserContext = createContext();
@@ -64,11 +64,22 @@ export const AuthContextProvider = ({ children }) => {
     };
   }, []);
 
+  const uploadImage = async (file) => {
+    const storageRef = ref(storage, `${user.uid}/${file.name}`);
+    await uploadBytes(storageRef, file);
+    const downloadURL = await getDownloadURL(storageRef);
+    setUser((prevUser) => ({
+      ...prevUser,
+      photoURL: downloadURL,
+    }));
+  };
+
   const contextValue = {
     createUser,
     signIn,
     logout,
     user,
+    uploadImage,
   };
 
   return (
@@ -83,5 +94,9 @@ export const useUserAuth = () => {
   if (!contextValue) {
     throw new Error('useUserAuth must be used within an AuthContextProvider');
   }
-  return contextValue;
+
+  const { user } = contextValue;
+  const photoURL = user ? user.photoURL : null;
+
+  return { ...contextValue, photoURL };
 };
