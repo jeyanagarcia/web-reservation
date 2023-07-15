@@ -1,35 +1,39 @@
-import React from "react";
-import { useParams } from 'react-router-dom';
-import { eventData } from '../../constant/eventData';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import { eventData } from "../../constant/eventData";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 const Booking = () => {
   const { eventKey } = useParams();
   const parsedEventKey = parseInt(eventKey);
-  const eventInfo = eventData.find(event => event.eventKey === parsedEventKey);
+  const eventInfo = eventData.find((event) => event.eventKey === parsedEventKey);
+  const [isModalOpen, setIsModalOpen] = useState(true);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
-    <section>
-      <div className="container mx-auto min-h-[500px] mb-14 ">
-        <div className="flex flex-wrap justify-left lg:flex-nowrap">
-          <div className="container mx-auto mt-32 text-left">
-            <h1 className="text-5xl font-bold mb-4">Booking an Event</h1>
-
-            <div className="container mx-auto mt-12 flex flex-wrap justify-left">
-              <div style={{ width: '50%', height: '100%', objectFit: 'cover' }}>
+    <>
+      {isModalOpen && (
+        <div className="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-75">
+          <div className="bg-white w-full max-w-md p-6 rounded-lg">
+            <button
+              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+              onClick={closeModal}
+            >
+              Close
+            </button>
+            <div className="flex flex-wrap justify-left">
+              <div className="w-full">
                 <img
-                  style={{ width: '50%', height: '100%', objectFit: 'cover' }}
+                  style={{ width: "100%", height: "auto" }}
                   src={eventInfo.image}
                   alt="Event Image"
-                />           
+                />
               </div>
             </div>
-          </div>
-        </div>
-
-
             <div className="ml-12">
               <h2 className="text-3xl font-bold mt-4">{eventInfo.title}</h2>
               <div className="flex items-center mt-2">
@@ -46,8 +50,10 @@ const Booking = () => {
                 </div>
               </div>
             </div>
-      </div>
-    </section>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

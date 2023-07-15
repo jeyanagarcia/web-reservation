@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faLocationDot, faUserGroup } from '@fortawesome/free-solid-svg-icons';
 import { eventData } from '../../constant/eventData'; 
 import { useUserAuth } from '../context/authContext';
 import WelcomeModal from '../login-signup/welcomeModal';
+import Booking from './booking';
 import EventGenerator from './eventGenerator'; 
 
 
@@ -13,25 +14,28 @@ const EventDetails = () => {
   const parsedEventKey = parseInt(eventKey);
   const eventInfo = eventData.find(event => event.eventKey === parsedEventKey);
 
-  const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
+  const [isOpenBooking, setIsOpenBooking] = useState(false);
+  const [isOpenWelcomeModal, setIsOpenWelcomeModal] = useState(false);
+  
   const { user, isLoading } = useUserAuth();
 
-  const openWelcomeModal = () => {
+  const openModal = () => {
     if (user) {
-      navigate(`/booking/${parsedEventKey}`);
+      setIsOpenBooking(true);
     } else {
-      setIsOpen(true);
+      setIsOpenWelcomeModal(true);
     }
   };
 
-  const closeWelcomeModal = () => {
-    setIsOpen(false);
+  const closeModal = () => {
+    setIsOpenBooking(false);
+    setIsOpenWelcomeModal(false);
   };
 
   useEffect(() => {
     if (!isLoading && user) {
-      setIsOpen(false); 
+      setIsOpenBooking(false); 
+      setIsOpenWelcomeModal(false);
     }
   }, [isLoading, user]);
 
@@ -79,7 +83,7 @@ const EventDetails = () => {
                   className="w-40 h-10 rounded-full shadow-shadowOne flex items-center justify-center 
                     bg-gradient-to-r from-bodyColor to-[#73d081] group hover:bg-gradient-to-b hover:from-green-200 hover:to-green-300 
                     transition-colors duration-1000 mx-auto text-black mr-4"
-                  onClick={openWelcomeModal}
+                  onClick={openModal}
                 >
                   Book Now
                 </button>
@@ -87,7 +91,7 @@ const EventDetails = () => {
                   className="w-40 h-10 rounded-full shadow-shadowOne flex items-center justify-center 
                     bg-gradient-to-r from-bodyColor to-[#73d081] group hover:bg-gradient-to-b hover:from-green-200 hover:to-green-300 
                     transition-colors duration-1000 mx-auto text-black mr-4"
-                  onClick={openWelcomeModal}
+                  onClick={openModal}
                 >
                   Wishlist
                 </button>
@@ -118,7 +122,8 @@ const EventDetails = () => {
 
       <EventGenerator eventData={eventData} count={4} excludeKey={parsedEventKey} />
 
-      {isOpen && <WelcomeModal closeModal={closeWelcomeModal} />}
+      {isOpenBooking && <Booking />}
+      {isOpenWelcomeModal && <WelcomeModal closeModal={closeModal} />}
     </section>
   );
 };
