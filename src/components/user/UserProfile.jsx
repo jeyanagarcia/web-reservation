@@ -17,7 +17,6 @@ const UserProfile = () => {
             <td>
               <button
                 className="border border-gray-300 hover:border-black rounded-full py-1 px-4"
-                
               >
                 Change
               </button>

@@ -11,7 +11,7 @@ import Login from "./components/login-signup/login";
 import SignUp from "./components/login-signup/signup";
 import EventDetails from './components/events/eventDetails';
 import BlogDetails from "./components/blog/blogDetails";
-import UserProfile from "./components/user/UserProfile";
+import UserProfile from "./components/user/userProfile";
 import ProtectedRoute from "./components/context/protectedRoute";
 import Booking from "./components/events/booking";
 import './index.css'
