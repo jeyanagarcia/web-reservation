@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '../../config/firebase';
 import { doc, onSnapshot, setDoc } from 'firebase/firestore';
@@ -8,14 +8,19 @@ export const UserContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
-  const createUser = (email, firstname, lastname, password) => {
+  const createUser = (email, firstname, lastname, age, selectedDay, selectedMonth, selectedYear, phoneNumber, password, selectedGender) => {
     return createUserWithEmailAndPassword(auth, email, password).then(async (result) => {
       const userRef = doc(db, 'users', result.user.uid);
       const userData = {
         email: result.user.email,
-        firstname: firstname,
-        lastname: lastname,
-        password: password,
+        firstname,
+        lastname,
+        age,
+        selectedDay,
+        selectedMonth,
+        selectedYear,
+        phoneNumber,
+        selectedGender,
       };
       await setDoc(userRef, userData);
       return result;
@@ -32,7 +37,6 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
       setUser(currentUser);
 
       if (currentUser) {
@@ -44,7 +48,12 @@ export const AuthContextProvider = ({ children }) => {
               ...prevUser,
               firstname: userData.firstname,
               lastname: userData.lastname,
-             
+              age: userData.age,
+              selectedDay: userData.selectedDay,
+              selectedMonth: userData.selectedMonth,
+              selectedYear: userData.selectedYear,
+              phoneNumber: userData.phoneNumber,
+              selectedGender: userData.selectedGender,
             }));
           }
         });

@@ -7,7 +7,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaGoogle, FaYoutube, FaUserCircle }
 
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Header = () => {
   const { user, logout } = useUserAuth();
   const navigate = useNavigate();
   const [nav, setNav] = useState(false);
@@ -159,4 +159,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;
