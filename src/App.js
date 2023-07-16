@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthContextProvider } from "./components/context/authContext";
+import { ShopContextProvider } from "./components/context/shopContext";
 import Header from "./constant/header";
 import Footer from "./constant/footer"
 import Home from "./components/home";
@@ -23,6 +24,7 @@ function App() {
     <Router>
         
         <AuthContextProvider>
+        <ShopContextProvider>
 
         <Header />
 
@@ -36,10 +38,11 @@ function App() {
           <Route path="/event/:eventKey" element={<EventDetails />} />
           <Route path="/article/:articleKey" element={<BlogDetails /> }/>
           <Route path="/user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
-         
+          <Route path="/wishlist" element={<Wishlist />} />
          
           
         </Routes>
+        </ShopContextProvider>
         </AuthContextProvider>
         
         
