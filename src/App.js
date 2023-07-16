@@ -13,6 +13,7 @@ import EventDetails from './components/events/eventDetails';
 import BlogDetails from "./components/blog/blogDetails";
 import UserProfile from "./components/user/userProfile";
 import ProtectedRoute from "./components/context/protectedRoute";
+import AdminHome from "./components/adminn/admin";
 
 import './index.css'
 
@@ -35,6 +36,9 @@ function App() {
           <Route path="/event/:eventKey" element={<EventDetails />} />
           <Route path="/article/:articleKey" element={<BlogDetails /> }/>
           <Route path="/user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+
+          <Route path="/admin" element={<AdminHome/>} />
+          
          
           
         </Routes>

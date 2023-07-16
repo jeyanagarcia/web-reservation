@@ -73,8 +73,8 @@ const Signup = () => {
         <form className='max-w-[400px] w-full mx-auto bg-transparent p-4' onSubmit={handleSubmit}>
           <h2 className='text-4xl font-bold text-center py-6'>Sign Up</h2>
 
-          <div className='flex py-2'>
-            <input
+          <div className='flex py-2 gap-2'>
+            <input 
               className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full bg-transparent'
               type="text"
               placeholder='Firstname'
@@ -90,7 +90,7 @@ const Signup = () => {
             />
           </div>
 
-          <div className='flex py-2'>
+          <div className='flex py-2 gap-2'>
             <input
               className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-1/3 bg-transparent'
               type="text"

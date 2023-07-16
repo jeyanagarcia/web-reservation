@@ -14,6 +14,7 @@ const Login = () => {
 
 
 {/*sample account user test@test.com pass qwertyuiop */}
+{/*sample account admin admin@gmail.com pass admin1 */}
 
 
 const handleSubmit = async (e) => {
@@ -21,7 +22,12 @@ const handleSubmit = async (e) => {
   setError('');
   try {
     await signIn(email, password);
-    navigate('/event');
+    if(email === 'admin@gmail.com' &&  password === 'admin1') {
+    navigate('/admin')
+    } else {
+      navigate('/event')
+    }
+    
   } catch (e) {
     setError(e.message);
     console.log(e.message);
