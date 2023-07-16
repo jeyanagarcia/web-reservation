@@ -3,41 +3,29 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faLocationDot, faUserGroup } from '@fortawesome/free-solid-svg-icons';
 import { eventData } from '../../constant/eventData'; 
-import { useUserAuth } from '../context/authContext';
 import WelcomeModal from '../login-signup/welcomeModal';
 import Booking from './booking';
 import EventGenerator from './eventGenerator'; 
 
-
 const EventDetails = () => {
   const { eventKey } = useParams();
   const parsedEventKey = parseInt(eventKey);
-  const eventInfo = eventData.find(event => event.eventKey === parsedEventKey);
+  const eventInfo = eventData.find((event) => event.eventKey === parsedEventKey);
 
   const [isOpenBooking, setIsOpenBooking] = useState(false);
   const [isOpenWelcomeModal, setIsOpenWelcomeModal] = useState(false);
-  
-  const { user, isLoading } = useUserAuth();
 
   const openModal = () => {
-    if (user) {
-      setIsOpenBooking(true);
+    if (isOpenBooking) {
+      setIsOpenBooking(false);
     } else {
-      setIsOpenWelcomeModal(true);
+      setIsOpenBooking(true);
     }
   };
 
   const closeModal = () => {
     setIsOpenBooking(false);
-    setIsOpenWelcomeModal(false);
   };
-
-  useEffect(() => {
-    if (!isLoading && user) {
-      setIsOpenBooking(false); 
-      setIsOpenWelcomeModal(false);
-    }
-  }, [isLoading, user]);
 
   return (
     <section>
@@ -96,14 +84,13 @@ const EventDetails = () => {
                   Wishlist
                 </button>
               </div>
-              
             </div>
           </div>
         </div>
       </div>
 
-      <div className='container mx-auto'>
-        <div className='container mx-auto min-w-[400px]'>
+      <div className="container mx-auto">
+        <div className="container mx-auto min-w-[400px]">
           <div className="container relative p-6 justify-center">
             <h1 className="text-2xl font-bold">About The Event</h1>
             <div className="bg-gray-300 rounded-lg p-6">
@@ -122,8 +109,8 @@ const EventDetails = () => {
 
       <EventGenerator eventData={eventData} count={4} excludeKey={parsedEventKey} />
 
-      {isOpenBooking && <Booking />}
-      {isOpenWelcomeModal && <WelcomeModal closeModal={closeModal} />}
+      {isOpenBooking && <Booking isOpen={isOpenBooking} onClose={closeModal} />}
+      {isOpenWelcomeModal && <WelcomeModal closeModal={() => setIsOpenWelcomeModal(false)} />}
     </section>
   );
 };

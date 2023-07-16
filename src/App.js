@@ -13,8 +13,9 @@ import EventDetails from './components/events/eventDetails';
 import BlogDetails from "./components/blog/blogDetails";
 import UserProfile from "./components/user/userProfile";
 import ProtectedRoute from "./components/context/protectedRoute";
-
+import Wishlist from "./components/events/wishlist";
 import './index.css'
+
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/event/:eventKey" element={<EventDetails />} />
           <Route path="/article/:articleKey" element={<BlogDetails /> }/>
           <Route path="/user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+         
          
           
         </Routes>
