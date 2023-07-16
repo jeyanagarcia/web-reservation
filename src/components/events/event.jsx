@@ -1,13 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { eventData } from '../../constant/eventData';
 import FeaturedEvent from './featuredLayout';
 import UpcomingEvent from './upcomingLayout';
 import Search from '../search-dropdown/search';
+import {BsChevronCompactLeft, BsChevronCOmpactRight} from 'react-icons/bs';
+
 
 const Event = () => {
+
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    const slideshowTimer = setTimeout(nextSlide, 5000);
+    return () => clearTimeout(slideshowTimer);
+  }, [currentIndex]);
+
+
+  const prevSlide = () => {
+    const isFirstSlide = currentIndex === 0;
+    const newIndex = isFirstSlide ? eventData.length -1: currentIndex -1;
+    setCurrentIndex(newIndex);
+  }
+
+  const nextSlide = () => {
+    setIsTransitioning(true);
+    setTimeout(() => {
+      const isLastSlide = currentIndex === eventData.length - 1;
+      const newIndex = isLastSlide ? 0 : currentIndex + 1;
+      setCurrentIndex(newIndex);
+      setIsTransitioning(false);
+    }, 500);
+  };
+
+
   return (
     <section className="w-full py-20 border-b-[1px] relative z-0">
+
+    <div className="min-h-screen flex flex-col justify-between">
+        <div className="max-w-[1400px] w-full m-auto py-12 px-4 relative">
+          <Link to={`/event/${eventData[currentIndex].eventKey}`} key={eventData[currentIndex].eventKey}>
+            <div
+              className={`w-full h-[700px] rounded-2xl bg-center bg-cover duration-500 ${
+                isTransitioning ? 'opacity-0' : 'opacity-100'
+              }`}
+              style={{ backgroundImage: `url(${eventData[currentIndex].image})` }}
+            ></div>
+          </Link>
+        </div>
+      </div>
+
       <div className="container mx-auto">
         <div className="mt-9 mb-9 ml-4">
           <h1 className="text-5xl font-bold text-left">Featured Event</h1>

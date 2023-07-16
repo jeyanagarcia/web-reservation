@@ -41,7 +41,7 @@ const handleSubmit = async (e) => {
             <div className='flex flex-col py-2 relative'>
               <FontAwesomeIcon icon={faEnvelope} className='text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2' />
               <input
-                className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full' 
+                className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full bg-transparent' 
                 type="email"
                 placeholder='Email'
                 value={email}
@@ -52,7 +52,7 @@ const handleSubmit = async (e) => {
             <div className='flex flex-col py-2 relative'>
               <FontAwesomeIcon icon={faLock} className='text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2' />
               <input
-                 className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full'
+                 className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full bg-transparent'
                 type="password"
                 placeholder='Password'
                 value={password}

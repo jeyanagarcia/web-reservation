@@ -27,6 +27,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+
     try {
       const userCredential = await createUser(
         email,
@@ -74,14 +75,14 @@ const Signup = () => {
 
           <div className='flex py-2'>
             <input
-              className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full'
+              className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full bg-transparent'
               type="text"
               placeholder='Firstname'
               value={firstname}
               onChange={(e) => setFirstname(e.target.value)}
             />
             <input
-              className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full'
+              className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full bg-transparent'
               type="text"
               placeholder='Lastname'
               value={lastname}
@@ -91,14 +92,14 @@ const Signup = () => {
 
           <div className='flex py-2'>
             <input
-              className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-1/3'
+              className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-1/3 bg-transparent'
               type="text"
               placeholder='Age'
               value={age}
               onChange={(e) => setAge(e.target.value)}
             />
             <input
-              className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-2/3'
+              className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-2/3 bg-transparent'
               type="text"
               placeholder='Phone Number'
               value={phoneNumber}
@@ -108,7 +109,7 @@ const Signup = () => {
           </div>
 
 
-          <div className="py-2">
+          <div className="py-2 bg-transparent">
           <GenderSelector 
             selectedGender ={selectedGender}
             setSelectedGender={setSelectedGender}
@@ -116,7 +117,7 @@ const Signup = () => {
           </div>
 
           <div className="py-2">
-            <p className="text-sm text-gray-400 mb-2">Date of Birth:</p>
+            <p className="text-sm text-gray-400 mb-2 bg-transparent">Date of Birth:</p>
             <BirthdaySelector
               selectedDay={selectedDay}
               setSelectedDay={setSelectedDay}
@@ -129,7 +130,7 @@ const Signup = () => {
 
           <div className='flex flex-col py-2'>
             <input
-              className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full'
+              className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full bg-transparent'
               type="email"
               placeholder='Email'
               value={email}
@@ -139,7 +140,7 @@ const Signup = () => {
 
           <div className='flex flex-col py-2'>
             <input
-              className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full'
+              className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full bg-transparent'
               type="password"
               placeholder='Password'
               value={password}
@@ -149,7 +150,7 @@ const Signup = () => {
 
           <div className='flex flex-col py-2'>
             <input
-              className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full'
+              className='border-black border-opacity-40 p-2 rounded-full pl-10 border w-full bg-transparent'
               type="password"
               placeholder='Retype Password'
               value={repassword}
