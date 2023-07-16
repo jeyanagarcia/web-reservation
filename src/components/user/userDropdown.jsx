@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUserAuth } from '../context/authContext';
 import { getDownloadURL, ref } from 'firebase/storage';
@@ -12,6 +12,21 @@ const UserDropdown = () => {
     return storedPhotoURL || 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
   });
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef();
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchPhotoURL = async () => {
@@ -41,7 +56,7 @@ const UserDropdown = () => {
   };
 
   const toggleDropdown = () => {
-    setIsDropdownOpen(prevState => !prevState);
+    setIsDropdownOpen((prevState) => !prevState);
   };
 
   return (
@@ -50,15 +65,14 @@ const UserDropdown = () => {
         className="w-8 h-8 rounded-full overflow-hidden cursor-pointer"
         onClick={toggleDropdown}
       >
-        <img
-          src={photoURL}
-          alt="Profile"
-          className="w-full h-full"
-        />
+        <img src={photoURL} alt="Profile" className="w-full h-full" />
       </div>
 
       {isDropdownOpen && (
-        <div className="absolute right-0 mt-1 py-2 w-48 bg-white rounded-md shadow-lg">
+        <div
+          className="absolute right-0 mt-1 py-2 w-48 bg-white rounded-md shadow-lg"
+          ref={dropdownRef}
+        >
           <div className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
             <Link to="/user-profile">Profile</Link>
           </div>
