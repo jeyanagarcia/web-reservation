@@ -57,7 +57,8 @@ const Event = () => {
           <h1 className="text-5xl font-bold text-left">Featured Event</h1>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 xl:gap-14">
+      <div className = "px-10 grid-wrapper">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 xl:gap-4">
         {eventData.map(event => (
           <Link to={`/event/${event.eventKey}`} key={event.eventKey}>
             <FeaturedEvent
@@ -70,6 +71,7 @@ const Event = () => {
           </Link>
         ))}
       </div>
+      </div>
       
       <div className="container mx-auto relative z-10"> 
         <div className="mt-9 mb-9 ml-4">
@@ -79,8 +81,8 @@ const Event = () => {
       </div>
           
   
-
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 xl:gap-14">
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
         {eventData.map(event => (
           <Link to={`/event/${event.eventKey}`} key={event.eventKey}>
             <UpcomingEvent
