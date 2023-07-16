@@ -78,13 +78,17 @@ const EventDetails = () => {
                 >
                   Book Now
                 </button>
+
                 <button
                   className="w-40 h-10 rounded-full shadow-shadowOne flex items-center justify-center 
                     bg-gradient-to-r from-bodyColor to-[#73d081] group hover:bg-gradient-to-b hover:from-green-200 hover:to-green-300 
                     transition-colors duration-1000 mx-auto text-black mr-4"
-                  onClick={ () => {addToCart(eventKey)}}
-                
+                  onClick={ () => {
+                    addToCart(eventKey);
+                    alert("Event added to wishlist!");
+                  }}
                 >
+                
                   Wishlist
                 </button>
               </div>

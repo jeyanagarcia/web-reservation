@@ -1,8 +1,6 @@
 import { createContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { eventData } from "../../constant/eventData";
-import Wishlist from "../events/wishlist";
-
 
 export const ShopContext = createContext(null);
 
@@ -30,13 +28,14 @@ export const ShopContextProvider = (props) => {
         [eventKey]: prev[eventKey] ? prev[eventKey] + 1 : 1
       }));
     };
-  
+
     const removeFromCart = (eventId) => {
-      setCartItems((prev) => ({
-        ...prev,
-        [eventId]: prev[eventId] ? prev[eventId] - 1 : 0
-      }));
-    };
+        setCartItems((prev) => {
+          const updatedCartItems = { ...prev };
+          delete updatedCartItems[eventId];
+          return updatedCartItems;
+        });
+      };
   
     const updateCartItemCount = (newAmount, eventId) => {
       setCartItems((prev) => ({
