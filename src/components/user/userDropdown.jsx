@@ -60,7 +60,7 @@ const UserDropdown = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative z-10">
       <div
         className="w-8 h-8 rounded-full overflow-hidden cursor-pointer"
         onClick={toggleDropdown}

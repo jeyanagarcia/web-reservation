@@ -2,11 +2,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faLocationDot, faUserGroup } from '@fortawesome/free-solid-svg-icons';
-import { eventData } from '../../constant/eventData'; 
+import { eventData } from '../../constant/eventData';
 import { ShopContext } from '../context/shopContext';
 import WelcomeModal from '../login-signup/welcomeModal';
 import Booking from './booking';
-import EventGenerator from './eventGenerator'; 
+import EventGenerator from './eventGenerator';
+import { useUserAuth } from '../context/authContext';
 
 const EventDetails = () => {
   const { eventKey } = useParams();
@@ -15,21 +16,44 @@ const EventDetails = () => {
 
   const [isOpenBooking, setIsOpenBooking] = useState(false);
   const [isOpenWelcomeModal, setIsOpenWelcomeModal] = useState(false);
+  const [eventId, setEventId] = useState('');
 
-  const {addToCart} = useContext(ShopContext); 
+  const { addToCart, saveWishlist } = useContext(ShopContext);
+  const { user } = useUserAuth();
+
+  const openBookingModal = () => {
+    setIsOpenBooking(true);
+  };
+
+  const closeBookingModal = () => {
+    setIsOpenBooking(false);
+  };
 
   const openModal = () => {
-    if (isOpenBooking) {
-      setIsOpenBooking(false);
+    if (user) {
+      openBookingModal();
     } else {
-      setIsOpenBooking(true);
+      setIsOpenWelcomeModal(true);
     }
   };
 
   const closeModal = () => {
-    setIsOpenBooking(false);
+    closeBookingModal();
+    setIsOpenWelcomeModal(false);
   };
 
+  useEffect(() => {
+    if (!user) {
+      setIsOpenWelcomeModal(false);
+    }
+  }, [user]);
+
+  const handleWishlistClick = () => {
+    addToCart(eventKey);
+    alert('Event added to wishlist!');
+    saveWishlist(user);
+  };
+  
   return (
     <section>
       <div className="container mx-auto min-h-[300px] mb-14 ">
@@ -70,27 +94,57 @@ const EventDetails = () => {
               </div>
 
               <div className="flex justify-left mt-5">
-                <button
-                  className="w-40 h-10 rounded-full shadow-shadowOne flex items-center justify-center 
-                    bg-gradient-to-r from-bodyColor to-[#73d081] group hover:bg-gradient-to-b hover:from-green-200 hover:to-green-300 
-                    transition-colors duration-1000 mx-auto text-black mr-4"
-                  onClick={openModal}
-                >
-                  Book Now
-                </button>
+                {user ? (
+                  <>
+                    <button
+                      className="w-40 h-10 rounded-full shadow-shadowOne flex items-center justify-center 
+                      bg-gradient-to-r from-bodyColor to-[#73d081] group hover:bg-gradient-to-b hover:from-green-200 hover:to-green-300 
+                      transition-colors duration-1000 mx-auto text-black mr-4"
+                      onClick={openModal}
+                    >
+                      Book Now
+                    </button>
 
-                <button
-                  className="w-40 h-10 rounded-full shadow-shadowOne flex items-center justify-center 
-                    bg-gradient-to-r from-bodyColor to-[#73d081] group hover:bg-gradient-to-b hover:from-green-200 hover:to-green-300 
-                    transition-colors duration-1000 mx-auto text-black mr-4"
-                  onClick={ () => {
-                    addToCart(eventKey);
-                    alert("Event added to wishlist!");
-                  }}
-                >
-                
-                  Wishlist
-                </button>
+                    <button
+                      className="w-40 h-10 rounded-full shadow-shadowOne flex items-center justify-center 
+                      bg-gradient-to-r from-bodyColor to-[#73d081] group hover:bg-gradient-to-b hover:from-green-200 hover:to-green-300 
+                      transition-colors duration-1000 mx-auto text-black mr-4"
+                      value={eventId}
+                      onClick={() => {
+                        setEventId(eventKey);
+                        addToCart(eventKey);
+                        alert('Event added to wishlist!');
+                      }}
+                    >
+                      Wishlist
+                    </button>
+                    {isOpenBooking && <Booking isOpen={isOpenBooking} onClose={closeModal} />}
+                  </>
+                ) : (
+                  <>
+                    <button
+                      className="w-40 h-10 rounded-full shadow-shadowOne flex items-center justify-center 
+                      bg-gradient-to-r from-bodyColor to-[#73d081] group hover:bg-gradient-to-b hover:from-green-200 hover:to-green-300 
+                      transition-colors duration-1000 mx-auto text-black mr-4"
+                      onClick={openModal}
+                    >
+                      Book Now
+                    </button>
+
+                    <button
+                      className="w-40 h-10 rounded-full shadow-shadowOne flex items-center justify-center 
+                      bg-gradient-to-r from-bodyColor to-[#73d081] group hover:bg-gradient-to-b hover:from-green-200 hover:to-green-300 
+                      transition-colors duration-1000 mx-auto text-black mr-4"
+                      onClick={() => setIsOpenWelcomeModal(true)}
+                    >
+                      Wishlist
+                    </button>
+
+                    {isOpenWelcomeModal && (
+                      <WelcomeModal closeModal={() => setIsOpenWelcomeModal(false)} />
+                    )}
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -114,11 +168,13 @@ const EventDetails = () => {
           </div>
         </div>
       </div>
-
+      
       <EventGenerator eventData={eventData} count={4} excludeKey={parsedEventKey} />
 
       {isOpenBooking && <Booking isOpen={isOpenBooking} onClose={closeModal} />}
-      {isOpenWelcomeModal && <WelcomeModal closeModal={() => setIsOpenWelcomeModal(false)} />}
+      {isOpenWelcomeModal && (
+        <WelcomeModal closeModal={closeModal} />
+      )}
     </section>
   );
 };

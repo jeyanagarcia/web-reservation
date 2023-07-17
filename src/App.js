@@ -40,9 +40,8 @@ function App() {
           <Route path="/article/:articleKey" element={<BlogDetails /> }/>
           <Route path="/user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminHome/>} />
-          
-
-
+          <Route path="/wishlist" element={<ProtectedRoute><Wishlist/></ProtectedRoute>} />
+        
          
           
         </Routes>
