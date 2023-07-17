@@ -4,7 +4,7 @@ import { eventData } from '../../constant/eventData';
 import FeaturedEvent from './featuredLayout';
 import UpcomingEvent from './upcomingLayout';
 import Search from '../search-dropdown/search';
-import {BsChevronCompactLeft, BsChevronCOmpactRight} from 'react-icons/bs';
+
 
 
 const Event = () => {

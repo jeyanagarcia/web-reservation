@@ -9,6 +9,7 @@ const EventContextProvider = ({ children }) => {
   const [choice, setChoices] = useState('Organizer (any)');
   const [genre, setGenre] = useState('Genre (any)');
   
+  const [cartItems, setCartItems] = useState();
 
   const [loading, setLoading] = useState(false);
 
