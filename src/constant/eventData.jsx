@@ -25,7 +25,7 @@ export const eventData = [
     genre2:"Concert",
     organization:"BCPA",
     limit:"100",
-    price:"40.00",
+    price:"Free",
     description:"The Sining Konsiyerto concert is a great way to celebrate the Filipino arts and culture. The concert is a fun and educational experience for people of all ages. If you are looking for a way to experience the best of Filipino art, then you should definitely check out the Sining Konsiyerto concert, people of all ages. If you are looking for a way to experience the best of Filipino art, then you should definitely check out the Sining Konsiyerto concert.",
     image:images.event1,
  
@@ -40,7 +40,7 @@ export const eventData = [
     genre2:"Concert",
     organization:"BCPA",
     limit:"100",
-    price:"40.00",
+    price:"Free",
     description:"The Sining Konsiyerto concert is a great way to celebrate the Filipino arts and culture. The concert is a fun and educational experience for people of all ages. If you are looking for a way to experience the best of Filipino art, then you should definitely check out the Sining Konsiyerto concert, people of all ages. If you are looking for a way to experience the best of Filipino art, then you should definitely check out the Sining Konsiyerto concert.",
     image:images.event2,
    

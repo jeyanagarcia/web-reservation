@@ -92,6 +92,10 @@ const EventDetails = () => {
                   <span>{eventInfo.limit}</span>
                 </div>
               </div>
+              
+              <div className='mt-4'>
+                  <span>Ticket Price : {eventInfo.price}</span>
+                </div>
 
               <div className="flex justify-left mt-5">
                 {user ? (

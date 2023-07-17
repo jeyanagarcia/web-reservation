@@ -16,16 +16,7 @@ export const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
   const [wishlistItems, setWishlistItems] = useState([]);
 
-  const getTotalCartAmount = () => {
-    let totalAmount = 0;
-    for (const eventId in cartItems) {
-      if (cartItems[eventId] > 0) {
-        const event = eventData.find((eventt) => eventt.eventKey === Number(eventId));
-        totalAmount += cartItems[eventId] * event.price;
-      }
-    }
-    return totalAmount;
-  };
+ 
 
   const addToCart = (eventKey) => {
     setCartItems((prev) => ({
@@ -104,7 +95,6 @@ export const ShopContextProvider = (props) => {
     addToCart,
     updateCartItemCount,
     removeFromCart,
-    getTotalCartAmount,
     checkout,
     wishlistItems
   };

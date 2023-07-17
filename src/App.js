@@ -17,7 +17,8 @@ import ProtectedRoute from "./components/context/protectedRoute";
 import AdminHome from "./components/adminn/admin";
 import Wishlist from "./components/events/wishlist";
 import './index.css'
-import Payment from "./components/events/booking/payment";
+import BookEvents from "./components/user/bookEvents";
+
 
 
 
@@ -40,8 +41,9 @@ function App() {
           <Route path="/event/:eventKey" element={<EventDetails />} />
           <Route path="/article/:articleKey" element={<BlogDetails /> }/>
           <Route path="/user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
-          <Route path="/admin" element={<AdminHome/>} />
+          <Route path="/admin" element={ <ProtectedRoute><AdminHome/></ProtectedRoute>}  />
           <Route path="/wishlist" element={<ProtectedRoute><Wishlist/></ProtectedRoute>} />
+          <Route path="/book-events" element={<BookEvents/>} />
 
      
         

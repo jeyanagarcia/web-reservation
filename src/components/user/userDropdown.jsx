@@ -60,9 +60,9 @@ const UserDropdown = () => {
   };
 
   return (
-    <div className="relative z-10">
-      <div
-        className="w-8 h-8 rounded-full overflow-hidden cursor-pointer"
+    <div className="relative">
+      <div 
+        className="w-8 h-8 rounded-full overflow-hidden cursor-pointer z-10"
         onClick={toggleDropdown}
       >
         <img src={photoURL} alt="Profile" className="w-full h-full" />
@@ -75,6 +75,10 @@ const UserDropdown = () => {
         >
           <div className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
             <Link to="/user-profile">Profile</Link>
+          </div>
+
+          <div className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+            <Link to="/book-events">Book Events</Link>
           </div>
 
           <div className="block px-4 py-2 text-gray-800 hover:bg-gray-100">

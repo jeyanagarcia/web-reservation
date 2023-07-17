@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, collection, addDoc } from 'firebase/firestore'
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 
@@ -14,13 +14,13 @@ const firebaseConfig = {
   };
   
   
-   const app = initializeApp(firebaseConfig);
-   const db = getFirestore(app)
-   const auth = getAuth();
-   const storage = getStorage();
+  const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth();
+const storage = getStorage();
 
    const upload = async (file, users, setLoading, setPhotoURL) => {
-    const storageRef = ref(storage, users.uid + '.png');
+    const storageRef = ref(storage, `${users.uid}/${file.name}`);
   
     setLoading(true);
     await uploadBytes(storageRef, file);
@@ -30,4 +30,4 @@ const firebaseConfig = {
     setPhotoURL(downloadURL);
   };
 
-  export { db, auth, storage, ref, uploadBytes, getDownloadURL };
+  export { db, auth, storage, ref, uploadBytes, getDownloadURL, collection, addDoc };
