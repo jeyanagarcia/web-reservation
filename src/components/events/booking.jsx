@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { eventData } from '../../constant/eventData';
@@ -6,6 +8,7 @@ import { faLocationDot, faTimes, faPlus, faMinus } from '@fortawesome/free-solid
 import { useUserAuth } from '../context/authContext';
 import DefaultUser from './booking/defaultUser';
 import Guest from './booking/guest';
+import Payment from './booking/payment';
 
 const Booking = ({ isOpen, onClose }) => {
   const { user } = useUserAuth();
@@ -30,35 +33,38 @@ const Booking = ({ isOpen, onClose }) => {
     const checkboxValue = event.target.value;
     setInfo(checkboxValue);
     setResidency(checkboxValue === 'yes');
-    setShowSecondSection(checkboxValue === 'no');
-    setShowThirdSection(checkboxValue === 'yes');
+    setShowSecondSection(checkboxValue === 'yes');
+    setShowThirdSection(checkboxValue === 'no');
   };
 
   return (
     <>
       {isOpen && (
         <div className="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-75 z-50">
-          <div className="bg-white w-full max-w-6xl p-6 rounded-lg relative">
+          <div className="bg-white w-full max-w-6xl p-6 rounded-lg relative" style={{ maxHeight: '880px' }}>
+
+
             <button
               className="absolute top-0 right-0 m-3 p-2 border-b-gray-500 text-black hover:text-gray-700 hover:bg-red-500 bg-transparent"
               onClick={closeModal}
             >
               <FontAwesomeIcon icon={faTimes} />
             </button>
-            <section>
-              <h1>Check Out</h1>
-              <div className="container mx-auto min-h-[300px] mb-14">
-                <div className="flex flex-wrap justify-left lg:flex-nowrap">
-                  <div className="w-full md:w-80 h-auto bg-gray-300 rounded-lg overflow-hidden mb-6 md:mb-0 md:mr-6">
-                    <img
-                      className="w-full h-full object-cover"
-                      src={eventInfo.image}
-                      alt="Event Image"
-                    />
-                  </div>
+  
+            <div className="grid grid-cols-3 grid-rows-2 gap-4 h-screen">
+            <div className="image-container flex items-center justify-center bg-gray-200">
+              <img
+                className="max-w-full max-h-full object-contain"
+                src={eventInfo.image}
+                alt="Event Image"
+              />
+            </div>
 
-                  <div className="p-6 flex flex-col justify-left">
-                    <h1 className="text-4xl font-bold">{eventInfo.title}</h1>
+            
+              <div className="info-container flex items-center justify-center bg-gray-300">
+                {/* Info Container Content */}
+                <div className="col-span-2 p-6">
+                <h1 className="text-2sm font-bold">{eventInfo.title}</h1>
                     <div className="flex items-center mt-2">
                       <FontAwesomeIcon icon={faLocationDot} className="mr-2" />
                       <span>{eventInfo.location}</span>
@@ -104,20 +110,39 @@ const Booking = ({ isOpen, onClose }) => {
                             No
                           </label>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                        </div>
+                        </div>
+                        </div>
               </div>
-            </section>
+  
+              {/* Payment Container */}
+              <div className="payment-container flex items-start justify-center">
+      <Payment />
+    </div>
+  
+              {/* Hidden Container */}
+              <div className="hiddencontainer-container flex items-center  col-span-2 row-span-2 mb-32">
+                {showSecondSection && (
+                  <div className="flex-col justify-center">
+                    <DefaultUser user={user} />
+                  </div>
+                )}
 
-            {showSecondSection && <DefaultUser user={user} />}
-            {showThirdSection && <Guest />}
+                {showThirdSection && (
+                  <div className="flex-col justify-center">
+                    <Guest />
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       )}
     </>
   );
+  
 };
 
 export default Booking;
+
+

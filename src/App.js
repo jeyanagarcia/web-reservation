@@ -17,6 +17,7 @@ import ProtectedRoute from "./components/context/protectedRoute";
 import AdminHome from "./components/adminn/admin";
 import Wishlist from "./components/events/wishlist";
 import './index.css'
+import Payment from "./components/events/booking/payment";
 
 
 
@@ -41,6 +42,8 @@ function App() {
           <Route path="/user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
           <Route path="/admin" element={<AdminHome/>} />
           <Route path="/wishlist" element={<ProtectedRoute><Wishlist/></ProtectedRoute>} />
+
+     
         
          
           
