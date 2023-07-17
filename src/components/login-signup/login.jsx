@@ -4,6 +4,7 @@ import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import images from '../../constant/images';
 import { useUserAuth } from '../context/authContext';
 import { Link, useNavigate } from 'react-router-dom';
+import { credentials } from '../adminn/adminLogData';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -11,6 +12,7 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const { signIn } = useUserAuth();
+
 
 
 {/*sample account user test@test.com pass qwertyuiop */}
@@ -22,10 +24,11 @@ const handleSubmit = async (e) => {
   setError('');
   try {
     await signIn(email, password);
-    if(email === 'admin@gmail.com' &&  password === 'admin1') {
-    navigate('/admin')
+    
+    if (credentials[email] === password) {
+      navigate('/admin');
     } else {
-      navigate('/event')
+      navigate('/event');
     }
     
   } catch (e) {
