@@ -43,6 +43,7 @@ const DefaultUser = ({ onConfirm }) => {
       title: eventInfo.title,
       organizer: eventInfo.organization,
       eventDate: eventInfo.date_time,
+      location: eventInfo.location,
     };
   
     try {
