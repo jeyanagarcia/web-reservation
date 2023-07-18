@@ -8,15 +8,15 @@ import {eventData} from '../../../constant/eventData';
 const DefaultUser = ({ onConfirm }) => {
   const { user } = useUserAuth();
   const [isConfirmed, setIsConfirmed] = useState(false);
-  const [ticketCount, setTicketCount] = useState(0); // Default ticket count is 0
-  const { eventKey } = useParams(); // Retrieve the eventKey parameter from the URL
+  const [ticketCount, setTicketCount] = useState(0); 
+  const { eventKey } = useParams();
   const parsedEventKey = parseInt(eventKey);
-  const eventInfo = eventData.find((event) => event.eventKey === parsedEventKey); // Find the corresponding event in the eventData array
+  const eventInfo = eventData.find((event) => event.eventKey === parsedEventKey); 
 
   useEffect(() => {
     const fetchTicketCount = async () => {
       try {
-        const attendeesQuery = query(collection(db, 'attendees'), where('eventKey', '==', eventKey));
+        const attendeesQuery = query(collection(db, 'attendees'), where('eventKey', '==', parsedEventKey));
         const attendeesSnapshot = await getDocs(attendeesQuery);
         const count = attendeesSnapshot.size;
         setTicketCount(count);
@@ -24,19 +24,19 @@ const DefaultUser = ({ onConfirm }) => {
         console.error('Error fetching ticket count:', error);
       }
     };
-
+  
     fetchTicketCount();
-  }, [eventKey]);
+  }, [parsedEventKey]);
 
   const handleConfirm = async () => {
-    const reservationDate = new Date().toISOString().split('T')[0]; // Get the current date only
+    const reservationDate = new Date().toISOString().split('T')[0]; 
   
     const userData = {
       email: user && user.email,
       name: `${user && user.firstname} ${user && user.lastname}`,
       age: user && user.age,
       userId: user.uid,
-      eventKey: parsedEventKey, // Use the parsedEventKey
+      eventKey: parsedEventKey, 
       ticketCount: ticketCount + 1,
       reservationDate,
       price: eventInfo.price,
@@ -48,23 +48,23 @@ const DefaultUser = ({ onConfirm }) => {
       console.log('Document written with ID:', docRef.id);
       onConfirm(userData);
   
-      // Update the ticket count for the corresponding event in Firestore using a transaction
-      const eventDocRef = doc(db, 'events', parsedEventKey); // Use the parsedEventKey
+     
+      const eventDocRef = doc(db, 'events', parsedEventKey); 
       await runTransaction(db, async (transaction) => {
         const eventDocSnapshot = await transaction.get(eventDocRef);
         if (eventDocSnapshot.exists()) {
           if (eventInfo.price === 'Free') {
-            // Handle the case where the event price is "Free"
+           
             transaction.update(eventDocRef, {
               ticketCount: ticketCount + 1,
-              totalPrice: 'Free', // Set the total price as "Free"
+              totalPrice: 'Free', 
             });
           } else {
-            // Handle the case where the event has a price
+            
             const eventPrice = parseFloat(eventInfo.price);
             transaction.update(eventDocRef, {
               ticketCount: ticketCount + 1,
-              totalPrice: (ticketCount + 1) * eventPrice, // Update the ticket count and calculate the total price
+              totalPrice: (ticketCount + 1) * eventPrice, 
             });
           }
         } else {
