@@ -40,6 +40,9 @@ const DefaultUser = ({ onConfirm }) => {
       ticketCount: ticketCount + 1,
       reservationDate,
       price: eventInfo.price,
+      title: eventInfo.title,
+      organizer: eventInfo.organization,
+      eventDate: eventInfo.date_time,
     };
   
     try {

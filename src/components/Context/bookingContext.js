@@ -1,5 +1,5 @@
-import React, { createContext, useState, useEffect } from 'react';
-import { doc, getDoc, setDoc, collection, addDoc } from 'firebase/firestore';
+import React, { createContext, useState, useEffect, useContext } from 'react';
+import { doc, getDoc, getDocs, collection, addDoc } from 'firebase/firestore';
 import { db } from '../../config/firebase';
 
 export const BookingContext = createContext();
@@ -7,6 +7,31 @@ export const BookingContext = createContext();
 export const BookingContextProvider = ({ children }) => {
   const [bookingId, setBookingId] = useState(null);
   const [bookingData, setBookingData] = useState(null);
+  const [reservationData, setReservationData] = useState(null);
+
+  const fetchReservationData = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, 'attendees'));
+      const reservations = [];
+      querySnapshot.forEach((doc) => {
+        const reservationData = doc.data();
+        reservations.push({
+          id: doc.id,
+          reservationDate: reservationData.reservationDate,
+          price: reservationData.price,
+          ...reservationData,
+        });
+      });
+      setReservationData(reservations[0]);
+      console.log(reservations);
+    } catch (error) {
+      console.error('Error fetching reservation data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchReservationData();
+  }, []);
 
   const handleConfirm = async (attendeeData) => {
     try {
