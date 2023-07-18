@@ -3,7 +3,7 @@ import React from 'react'
 const bookEvents = () => {
   return (
     <div>
-      nyeheheh
+      
     </div>
   )
 }

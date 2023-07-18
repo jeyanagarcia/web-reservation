@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ShopContext } from '../context/shopContext';
+import { ShopContext } from '../context/wishlistContext';
 import { eventData } from '../../constant/eventData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGhost } from '@fortawesome/free-solid-svg-icons';

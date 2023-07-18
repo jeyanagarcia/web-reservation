@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { eventData } from '../../constant/eventData';
 import { doc, setDoc, getFirestore, getDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
-import { useUserAuth } from '../context/authContext';
+import { useUserAuth } from './authContext';
 
 export const ShopContext = createContext(null);
 

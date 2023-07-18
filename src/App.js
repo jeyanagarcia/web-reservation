@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthContextProvider } from "./components/context/authContext";
-import { ShopContextProvider } from "./components/context/shopContext";
+import { ShopContextProvider } from "./components/context/wishlistContext";
+import { BookingContextProvider } from "./components/context/bookingContext";
 import Header from "./constant/header";
 import Footer from "./constant/footer"
 import Home from "./components/home";
@@ -28,6 +29,7 @@ function App() {
         
         <AuthContextProvider>
         <ShopContextProvider>
+        <BookingContextProvider>
 
         <Header />
 
@@ -43,6 +45,8 @@ function App() {
           <Route path="/user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
           <Route path="/admin" element={ <ProtectedRoute><AdminHome/></ProtectedRoute>}  />
           <Route path="/wishlist" element={<ProtectedRoute><Wishlist/></ProtectedRoute>} />
+
+          
           <Route path="/book-events" element={<BookEvents/>} />
 
      
@@ -50,6 +54,7 @@ function App() {
          
           
         </Routes>
+        </BookingContextProvider>
         </ShopContextProvider>
         </AuthContextProvider>
         

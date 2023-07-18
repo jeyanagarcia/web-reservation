@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useUserAuth } from '../../context/authContext';
-import { collection, addDoc } from 'firebase/firestore';
+import { addDoc, collection, setDoc, doc } from 'firebase/firestore';
 import { db } from '../../../config/firebase';
 
 const Guest = ({ eventKey,  onConfirm }) => {
@@ -18,22 +18,19 @@ const Guest = ({ eventKey,  onConfirm }) => {
       email,
       residency,
       eventKey,
-      
+      userId: user.uid,
     };
-
+  
     try {
-      const docRef = await addDoc(collection(db, 'attendees'), {
-        userId: user.uid,
-        ...attendeeData,
-      });
-
-      console.log('Document written with ID: ', docRef.id);
-      setIsConfirmed(true); 
-      onConfirm();
+      const docRef = await addDoc(collection(db, 'attendees'), attendeeData);
+      setIsConfirmed(true);
+      console.log(docRef.id);
+      onConfirm(attendeeData); 
     } catch (error) {
       console.error('Error saving attendee data:', error);
     }
   };
+  
 
   return (
     <div>

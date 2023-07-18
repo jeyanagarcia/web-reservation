@@ -3,15 +3,17 @@ import { useParams } from 'react-router-dom';
 import { eventData } from '../../constant/eventData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { useUserAuth } from '../context/authContext';
 import DefaultUser from './booking/defaultUser';
 import Guest from './booking/guest';
-import Payment from './booking/payment';
+import GuestPayment from './booking/guestpayment';
+import DUPayment from './booking/duPayment';
+import { MdOutlineReceiptLong } from 'react-icons/md';
 
 const Booking = ({ isOpen, onClose }) => {
-  const { user } = useUserAuth();
   const [info, setInfo] = useState('');
-  const [showPaymentContent, setShowPaymentContent] = useState(false);
+  const [showGuestPaymentContent, setShowGuestPaymentContent] = useState(false);
+  const [showDUPaymentContent, setShowDUPaymentContent] = useState(false);
+  const [isDefaultPaymentVisible, setIsDefaultPaymentVisible] = useState(true);
 
   const { eventKey } = useParams();
   const parsedEventKey = parseInt(eventKey);
@@ -28,8 +30,14 @@ const Booking = ({ isOpen, onClose }) => {
     setInfo(checkboxValue);
   };
 
-  const handleConfirm = () => {
-    setShowPaymentContent(true);
+  const guestHandleConfirm = () => {
+    setShowGuestPaymentContent(true);
+    setIsDefaultPaymentVisible(false);
+  };
+
+  const DUHandleConfirm = () => {
+    setShowDUPaymentContent(true);
+    setIsDefaultPaymentVisible(false);
   };
 
   return (
@@ -99,12 +107,27 @@ const Booking = ({ isOpen, onClose }) => {
               </div>
 
               <div className="payment-container flex items-start justify-center">
-                <Payment onConfirmed={showPaymentContent} />
+                {isDefaultPaymentVisible && (
+                  <div className="payment-container h-[168%] w-full border-2 rounded-lg border-gray-500 mt-10 flex flex-col">
+                    <h1 className="payment-title text-2xl mt-4 ml-4">Payment Summary</h1>
+                    <div className="empty-content flex flex-col items-center justify-center flex-1">
+                      <div className="payment-icon flex items-center justify-center mt-4">
+                        <MdOutlineReceiptLong className="payment-icon-svg text-5xl text-green-500" />
+                      </div>
+                      <p className="payment-text mt-4 text-center">
+                        Your Payment Summary Will Be Displayed Here.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {showDUPaymentContent && <DUPayment onConfirmed={showDUPaymentContent} />}
+                {showGuestPaymentContent && <GuestPayment onConfirmed={showGuestPaymentContent} />}
               </div>
 
               <div className="hiddencontainer-container flex items-center col-span-2 row-span-2 mb-32">
-                {info === 'yes' && <DefaultUser user={user} />}
-                {info === 'no' && <Guest eventKey={parsedEventKey} onConfirm={handleConfirm} />}
+                {info === 'yes' && <DefaultUser eventKey={parsedEventKey} onConfirm={DUHandleConfirm} />}
+                {info === 'no' && <Guest eventKey={parsedEventKey} onConfirm={guestHandleConfirm} />}
               </div>
             </div>
           </div>

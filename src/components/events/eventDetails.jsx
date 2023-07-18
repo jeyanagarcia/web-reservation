@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faLocationDot, faUserGroup } from '@fortawesome/free-solid-svg-icons';
 import { eventData } from '../../constant/eventData';
-import { ShopContext } from '../context/shopContext';
+import { ShopContext } from '../context/wishlistContext';
 import WelcomeModal from '../login-signup/welcomeModal';
 import Booking from './booking';
 import EventGenerator from './eventGenerator';
