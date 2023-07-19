@@ -66,9 +66,6 @@ const Header = () => {
           <Link to="/adminEvent">Events</Link>
         </li>
         <li>
-          <Link to="/adminRefund">Refund</Link>
-        </li>
-        <li>
           <Link to="/adminQuery">Queries</Link>
         </li>
       </ul>
@@ -106,10 +103,6 @@ const Header = () => {
 
           <li className="border-b hover:bg-green-200">
           <Link to="/adminEvent">Events</Link>
-          </li>
-
-          <li className="border-b hover:bg-green-200">
-          <Link to="/adminRefund">Refund</Link>
           </li>
 
           <li className="border-b hover:bg-green-200">

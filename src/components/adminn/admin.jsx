@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import OverViewLayout from './overviewLayout';
+import OverViewLayout from './adminLayout/overviewLayout';
 import { Link } from 'react-router-dom';
-import { AdminData } from './adminData';
+import { AdminData } from './adminData/adminData';
 import images from '../../constant/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faEdit, faFileAlt } from '@fortawesome/free-solid-svg-icons';
