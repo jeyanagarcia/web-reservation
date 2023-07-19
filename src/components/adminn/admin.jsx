@@ -128,9 +128,11 @@ const Admin = () => {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );
+
 };
 
 export default Admin;
