@@ -59,6 +59,40 @@ const UserDropdown = () => {
     setIsDropdownOpen((prevState) => !prevState);
   };
 
+
+
+  if (user && user.email === 'admin@gmail.com')  {
+    return (
+      <div className="relative">
+        <div 
+          className="w-8 h-8 rounded-full overflow-hidden cursor-pointer z-10"
+          onClick={toggleDropdown}
+        >
+          <img src={photoURL} alt="Profile" className="w-full h-full" />
+        </div>
+  
+        {isDropdownOpen && (
+          <div
+            className="absolute right-0 mt-1 py-2 w-48 bg-white rounded-md shadow-lg"
+            ref={dropdownRef}
+          >
+            <div className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+              <Link to="/user-profile">Profile</Link>
+            </div>
+  
+            <div
+              className="block px-4 py-2 text-gray-800 hover:bg-gray-100 cursor-pointer"
+              onClick={handleLogout}
+            >
+              Logout
+            </div>
+          </div>
+        )}
+      </div>
+    );
+
+  }
+ else {
   return (
     <div className="relative">
       <div 
@@ -96,5 +130,6 @@ const UserDropdown = () => {
     </div>
   );
 };
+}
 
 export default UserDropdown;

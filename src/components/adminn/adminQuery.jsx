@@ -24,7 +24,6 @@ const AdminBlog = () => {
                 style={{ backgroundColor: 'rgba(224, 224, 224, 0.7)' }}
               >
                 <ul className="flex border-b">
-                  
                   <li
                    >
                     Draft
