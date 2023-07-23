@@ -1,49 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import OverViewLayout from './adminLayout/overviewLayout';
 import { Link } from 'react-router-dom';
-import { AdminData } from './adminData/adminData';
+import { AdminData } from '../../constant/eventData';
+import { sampleEvents } from '../../constant/eventData';
 import images from '../../constant/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faEdit, faFileAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Admin = () => {
-  const sampleEvents = [
-    {
-      id: 1,
-      title: 'Sining Konsiyerto',
-      date: '2023-07-20',
-      time: '8:00 A.M.',
-      image: images.event1,
-    },
-    {
-      id: 2,
-      title: 'Dula, Dulaan',
-      date: '2023-07-25',
-      time: '8:00 A.M.',
-      image: images.event2,
-    },
-    {
-      id: 3,
-      title: 'Bingo ng Binan',
-      date: '2023-07-30',
-      time: '8:00 A.M.',
-      image: images.event3,
-    },
-    {
-      id: 4,
-      title: 'Kakahuyan',
-      date: '2023-08-05',
-      time: '8:00 A.M.',
-      image: images.event4,
-    },
-    {
-      id: 5,
-      title: 'Sining Konsiyerto',
-      date: '2023-08-10',
-      time: '8:00 A.M.',
-      image: images.event1,
-    },
-  ];
+
 
   const [upcomingEventsHeight, setUpcomingEventsHeight] = useState('auto');
 
@@ -90,14 +55,14 @@ const Admin = () => {
             >
               <h1 className="text-2xl font-bold mb-4">Upcoming Events</h1>
               <ul>
-                {sampleEvents.map((event) => (
-                  <li key={event.id}>
+                {sampleEvents.map((events) => (
+                  <li key={events.id_1}>
                     <div className="flex items-center">
-                      <img src={event.image} alt={event.title} className="w-12 h-12 rounded border border-gray-300 mr-4" />
+                      <img src={events.image_1} alt={events.title_1} className="w-12 h-12 rounded border border-gray-300 mr-4" />
                       <div>
-                        <h3>{event.title}</h3>
+                        <h3>{events.title_1}</h3>
                         <p>
-                          {event.date} | {event.time}
+                          {events.date_1} | {events.time_1}
                         </p>
                       </div>
                     </div>
