@@ -4,7 +4,7 @@ import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import images from '../../constant/images';
 import { useUserAuth } from '../context/authContext';
 import { Link, useNavigate } from 'react-router-dom';
-import { credentials } from '../adminn/adminLogData';
+import { credentials } from '../adminn/adminData/adminLogData';
 
 const Login = () => {
   const [email, setEmail] = useState('');

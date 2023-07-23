@@ -18,6 +18,9 @@ import ProtectedRoute from "./components/context/protectedRoute";
 import AdminHome from "./components/adminn/admin";
 import Wishlist from "./components/events/wishlist";
 import './index.css'
+import AdminEvent from "./components/adminn/adminEvent"
+import AdminBlog from "./components/adminn/adminBlog"
+import AdminQuery from "./components/adminn/adminQuery"
 import BookEvents from "./components/user/bookEvents";
 
 
@@ -45,6 +48,9 @@ function App() {
           <Route path="/user-profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
           <Route path="/admin" element={ <ProtectedRoute><AdminHome/></ProtectedRoute>}  />
           <Route path="/wishlist" element={<ProtectedRoute><Wishlist/></ProtectedRoute>} />
+          <Route path="/adminEvent" element={<AdminEvent />} />
+          <Route path="/adminBlog" element={<AdminBlog />} />
+          <Route path="/adminQuery" element={<AdminQuery />} />
 
           
           <Route path="/book-events" element={<BookEvents/>} />

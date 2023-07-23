@@ -88,4 +88,76 @@ export const eventData = [
 
 ];
 
+
+
+export const AdminData = [
+    {
+        adKey: 1,
+        eventsCreated: (
+            <div>
+                <h4 style={{ fontWeight: 'bold', fontFamily: 'Arial' }}>20</h4>
+                <p style={{ color: '#8c8c8c', fontFamily: 'Arial', fontSize: '20px' }}>Events Created</p>
+            </div>
+        )
+    },
+    {
+        adKey: 2,
+        userRegistration: (
+            <div>
+                <h4 style={{ fontWeight: 'bold', fontFamily: 'Arial' }}>560</h4>
+                <p style={{ color: '#8c8c8c', fontFamily: 'Arial', fontSize: '20px' }}>User Registrations</p>
+            </div>
+        )
+    },
+    {
+        adKey: 3,
+        ticketSales: (
+            <div>
+                <h4 style={{ fontWeight: 'bold', fontFamily: 'Arial' }}>280</h4>
+                <p style={{ color: '#8c8c8c', fontFamily: 'Arial', fontSize: '20px' }}>Ticket Sales</p>
+            </div>
+        
+        )
+    },
+];
+
+
+    export const sampleEvents = [
+      {
+        id_1: 1,
+        title_1: 'Sining Konsiyerto',
+        date_1: '2023-07-20',
+        time_1: '8:00 A.M.',
+        image_1: images.event1,
+      },
+      {
+        id_1: 2,
+        title_1: 'Dula, Dulaan',
+        date_1: '2023-07-25',
+        time_1: '8:00 A.M.',
+        image_1: images.event2,
+      },
+      {
+        id_1: 3,
+        title_1: 'Bingo ng Binan',
+        date_1: '2023-07-30',
+        time_1: '8:00 A.M.',
+        image_1: images.event3,
+      },
+      {
+        id_1: 4,
+        title_1: 'Kakahuyan',
+        date_1: '2023-08-05',
+        time_1: '8:00 A.M.',
+        image_1: images.event4,
+      },
+      {
+        id_1: 5,
+        title_1: 'Sining Konsiyerto',
+        date_1: '2023-08-10',
+        time_1: '8:00 A.M.',
+        image_1: images.event1,
+      },
+    ];
+
 export default eventData;

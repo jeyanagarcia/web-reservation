@@ -44,10 +44,83 @@ const Header = () => {
     setIsUserLoggedIn(true);
   }, []);
 
+
+  if (user && user.email === 'admin@gmail.com') 
+  {
+    return (
+    <div
+      className={`flex w-full justify-between items-center h-20 px-4 z-10 text-black navbar sticky top-0 backdrop-blur-lg bg-white/30`}
+    > 
+      <div>
+        <h1>Biñan</h1>
+      </div>
+
+      <ul className="hidden md:flex">
+        <li>
+          <Link to="/admin">Home</Link>
+        </li>
+        <li>
+          <Link to="/adminBlog">Blog</Link>
+        </li>
+        <li>
+          <Link to="/adminEvent">Events</Link>
+        </li>
+        <li>
+          <Link to="/adminQuery">Queries</Link>
+        </li>
+      </ul>
+
+      <div className="hidden md:flex">
+        <ul className="hidden md:flex">
+             <li>
+              <UserDropdown />
+            </li>
+        </ul>
+      </div>
+
+      <div onClick={handleNav} className="md:hidden z-10">
+        {nav ? (
+          <AiOutlineClose className="text-black" size={20} />
+        ) : (
+          <HiOutlineMenuAlt4 size={20} />
+        )}
+      </div>
+
+      <div
+        onClick={handleNav}
+        className={nav ? 'absolute text-black left-0 top-0 w-full bg-gray-100/90 px-4 py-7 flex flex-col' : 'absolute left-[-100%]'}
+      >
+        <ul>
+          <h1>Biñan</h1>
+
+          <li className="border-b hover:bg-green-200">
+          <Link to="/admin">Home</Link>
+          </li>
+
+          <li className="border-b hover:bg-green-200">
+          <Link to="/adminBlog">Blog</Link>
+          </li>
+
+          <li className="border-b hover:bg-green-200">
+          <Link to="/adminEvent">Events</Link>
+          </li>
+
+          <li className="border-b hover:bg-green-200">
+          <Link to="/adminQuery">Queries</Link>
+          </li>
+        </ul>
+      </div>    
+
+      
+      </div>
+    )
+  }
+
+ else {
   return (
     <div
       className={`flex w-full justify-between items-center h-20 px-4 z-10 text-black navbar sticky top-0 backdrop-blur-lg bg-white/30`}
-    >
+    > 
       <div>
         <h1>Biñan</h1>
       </div>
@@ -148,5 +221,6 @@ const Header = () => {
     </div>
   );
 };
+}
 
 export default Header;
