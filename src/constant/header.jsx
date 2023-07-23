@@ -96,7 +96,7 @@ const Header = () => {
 
       <div
         onClick={handleNav}
-        className={nav ? 'absolute text-black left-0 top-0 w-full bg-gray-100/90 px-4 py-7 flex flex-col' : 'absolute left-[-100%]'}
+        className={nav ? ' z-10 absolute text-black left-0 top-0 w-full bg-gray-100/90 px-4 py-7 flex flex-col' : 'absolute left-[-100%]'}
       >
         <ul>
           <h1>Biñan</h1>
@@ -119,9 +119,12 @@ const Header = () => {
 
           <div className="flex flex-col">
             {isUserLoggedIn ? (
-              <Link to="/profile">
+              <Link to="/user-profile">
                 <button className="rounded-full border w-full my-5 py-2 bg-green-600 hover:bg-green-500 text-white">
-                  <FaUserCircle />
+                <div className='flex'>
+                  <div className='mt-1 ml-5'><FaUserCircle /></div>
+                  <div className='ml-32'>User Profile</div>
+                  </div>
                 </button>
               </Link>
             ) : (

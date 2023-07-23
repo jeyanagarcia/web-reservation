@@ -70,7 +70,6 @@ const DuPayment = () => {
         )}
       </div>
 
-      {/* Modal */}
       {isModalOpen && (
         <BookSuccessModal onClose={closeModal} />
       )}

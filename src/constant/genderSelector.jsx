@@ -12,7 +12,7 @@ const GenderSelector = ({ selectedGender, setSelectedGender }) => {
   ];
 
   return (
-    <div className="w-72 font-medium">
+    <div className="text-sm text-gray-400 mb-2 bg-transparent">
       <div
         onClick={() => setOpen(!open)}
         className={`bg-transparent w-full p-2 flex items-center justify-between rounded ${

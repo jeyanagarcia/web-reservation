@@ -90,6 +90,7 @@ export const ShopContextProvider = (props) => {
     fetchWishlistData();
   }, [user]);
 
+  
   const contextValue = {
     cartItems,
     addToCart,

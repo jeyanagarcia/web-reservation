@@ -16,6 +16,7 @@ const BookedEventsLayout = ({ events, onEventClick }) => {
           >
             <h1>{event.title}</h1>
             <p>When: {event.eventDate}</p>
+            <p>Location: {event.location}</p>
             <p>Organizer: {event.organizer}</p>
             <p>Ticket No: {event.ticketCount}</p>
           </div>

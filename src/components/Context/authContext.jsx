@@ -8,7 +8,7 @@ export const UserContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
-  const createUser = (email, firstname, lastname, age, selectedDay, selectedMonth, selectedYear, phoneNumber, password, selectedGender) => {
+  const createUser = (email, firstname, lastname, age, selectedDay, selectedMonth, selectedYear, phoneNumber, password, selectedGender,residency) => {
     return createUserWithEmailAndPassword(auth, email, password).then(async (result) => {
       const userRef = doc(db, 'users', result.user.uid);
       const userData = {
@@ -21,6 +21,8 @@ export const AuthContextProvider = ({ children }) => {
         selectedYear,
         phoneNumber,
         selectedGender,
+        residency
+        
       };
       await setDoc(userRef, userData);
       return result;

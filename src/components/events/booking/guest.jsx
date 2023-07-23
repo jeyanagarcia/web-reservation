@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useUserAuth } from '../../context/authContext';
-import { addDoc, collection, setDoc, doc } from 'firebase/firestore';
+import { collection, addDoc, doc, runTransaction, where, getDocs, query } from 'firebase/firestore';
 import { db } from '../../../config/firebase';
+import {eventData} from '../../../constant/eventData';
 
 const Guest = ({ eventKey,  onConfirm }) => {
   const [name, setName] = useState('');
@@ -9,16 +11,45 @@ const Guest = ({ eventKey,  onConfirm }) => {
   const [email, setEmail] = useState('');
   const [residency, setResidency] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
+  const [ticketCount, setTicketCount] = useState(0);
   const { user } = useUserAuth();
+  const parsedEventKey = parseInt(eventKey);
+  const eventInfo = eventData.find((event) => event.eventKey === parsedEventKey);
+
+ useEffect(() => {
+    const fetchTicketCount = async () => {
+      try {
+        const attendeesQuery = query(collection(db, 'attendees'), where('eventKey', '==', eventKey));
+        const attendeesSnapshot = await getDocs(attendeesQuery);
+        const count = attendeesSnapshot.size;
+        setTicketCount(count);
+      } catch (error) {
+        console.error('Error fetching ticket count:', error);
+      }
+    };
+
+    fetchTicketCount();
+  }, [eventKey]);
 
   const handleConfirm = async () => {
+    const reservationDate = new Date().toISOString().split('T')[0]; 
     const attendeeData = {
-      name,
-      age,
-      email,
+      email:email,
+      name: name,
+      age: age,
+      userId:user.uid,
+      eventKey:eventKey,
       residency,
       eventKey,
       userId: user.uid,
+      ticketCount: ticketCount + 1,
+      reservationDate,
+      price: eventInfo.price,
+      title: eventInfo.title,
+      organizer: eventInfo.organization,
+      eventDate: eventInfo.date_time,
+      location: eventInfo.location,
+
     };
   
     try {

@@ -19,6 +19,7 @@ const Signup = () => {
   const [selectedYear, setSelectedYear] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [selectedGender, setSelectedGender] = useState('');
+  const [residency, setResidency] = useState(false);
 
   const [error, setError] = useState('');
   const { createUser } = useUserAuth();
@@ -40,6 +41,7 @@ const Signup = () => {
         phoneNumber,
         password,
         selectedGender,
+        residency,
       );
 
       const userRef = doc(db, 'users', userCredential.user.uid);
@@ -52,7 +54,8 @@ const Signup = () => {
         selectedMonth,
         selectedYear,
         phoneNumber,
-        selectedGender
+        selectedGender,
+        residency
       };
       await setDoc(userRef, userData);
 
@@ -126,6 +129,35 @@ const Signup = () => {
               selectedYear={selectedYear}
               setSelectedYear={setSelectedYear}
             />
+          </div>
+
+          <div className="flex flex-col mt-1">
+          <p className="text-sm text-gray-400 mb-2 bg-transparent">Resident of Binan?</p>
+          <div className="flex gap-2 mt-1">
+            <div className="flex items-center ml-12">
+              <input
+                id="yesCheckbox"
+                type="checkbox"
+                checked={residency === true}
+                onChange={() => setResidency(true)}
+              />
+              <label htmlFor="yesCheckbox" className="ml-1">
+                Yes
+              </label>
+            </div>
+            <div className="flex items-center ml-8">
+              <input
+                id="noCheckbox"
+                type="checkbox"
+                checked={residency === false}
+                onChange={() => setResidency(false)}
+                
+              />
+              <label htmlFor="noCheckbox" className="ml-1">
+                No
+              </label>
+            </div>
+          </div>
           </div>
 
           <div className='flex flex-col py-2'>
