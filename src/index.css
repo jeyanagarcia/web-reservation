@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+:root{
+    --primary-dark : #d9d7f9;
+    --primary-light : #84D7A0;
+}
+
+.icon{
+    color: var(--primary-light);
+}
+
+body {
+    background-color: #F5F5F5;
+}
+
+@layer base {
+    body {
+        @apply font-[Merriweather]
+    }
+    li {
+        @apply p-4
+    }
+    h1 {
+       @apply text-3xl font-bold 
+    }
+    h2 {
+        @apply text-3xl font-bold
+    }
+    h3{
+        @apply text-xl font-bold
+    }
+    button{
+        @apply p-3 border bg-[var(--primary-light)] text-white rounded-md
+    }
+    .icon {
+        @apply text-2xl cursor-pointer
+    }
+    .dropdown {
+        @apply w-full lg:max-w-[296px] cursor-pointer;
+    }
+    .dropdown-btn {
+        @apply flex h-[64px] items-center px-[18px] border rounded-lg;
+    }
+    .dropdown-icon-primary {
+        @apply text-2xl mr-[18px] text-green-700;
+    }
+    .dropdown-icon-secondary {
+        @apply text-2xl text-green-700 ml-auto;
+    }
+    .dropdown-menu {
+        @apply px-6 py-8 text-[15px] space-y-6 shadow-md absolute w-full z-20 list-none rounded-b-lg;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        justify-content: center;
+        background-color: rgba(132, 215, 160, 0.8);
+        z-index: 20;
+    }
+
+    .navbar {
+        background-color: #F3F3F3;
+        transition: background-color 0.3s;
+        box-shadow: 0 0px 20px 0px rgba(0, 0, 0, 0.05);
+    
+      }
+  
+}
